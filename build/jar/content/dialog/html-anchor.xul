@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-paragraphs"
+    title="Add Local Anchor"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+		<groupbox id="details">
+			<box>
+				<label control="href" width="32">href</label>
+				<vbox>
+					<textbox id="href" value=""  width="180"/>
+					<button label="Choose File …" oncommand="getFile();"/>
+				</vbox>
+			</box>
+		</groupbox>
+		<groupbox>
+				<box>
+					<label control="text" width="32">text</label>
+					<textbox id="text" value="" />
+				</box>
+		</groupbox>
+
+	<groupbox id="sample"/>
+	<groupbox id="idclass" />
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+/* exported setSource, setDestination, setAccept, init */
+		function getParms() {
+			return {
+				href:document.getElementById("href").value,
+				text:document.getElementById("text").value,
+				id:document.getElementById("id").value,
+				className:document.getElementById("class").value
+			};
+		}
+
+		function setSource() {
+			putSource('Select [Choose File …] for the href');
+		}
+
+		function setDestination() {
+			putDestination(addAnchor(getParms()));
+			window.sizeToContent();
+		}
+
+		function getFile() {
+			var file='';
+			var nsIFilePicker = Components.interfaces.nsIFilePicker;
+			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+
+//			fp.appendFilter("All Files","*.*");
+			fp.init(window, "Select a File", nsIFilePicker.modeOpen);
+			var result=fp.show();
+			if (result != nsIFilePicker.returnCancel) {
+				file = fp.file.path;
+				file = relative(file,window.arguments[0].inn.cwd);
+			}
+			document.getElementById('href').value=file;
+			setDestination();
+		}
+
+		function init() {
+			dialogInit();
+
+			setSetDestination(['href','text']);
+			getFile();
+		}
+
+	</script>
+</dialog>

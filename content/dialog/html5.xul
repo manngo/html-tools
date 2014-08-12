@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-heading"
+    title="Convert Document to HTML5"
+    orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	qonload="init();"
+	>
+
+	<groupbox id="coding">
+		<caption>Coding</caption>
+
+		<checkbox id="doctype" label="&lt;!DOCTYPE html&gt;" value="1" checked="true" persist="checked"/>
+		<checkbox id="lang" label="&lt;html lang=&quot;en&quot;&gt;" value="1" checked="true" persist="checked"/>
+		<checkbox id="charset" label="&lt;meta charset=&quot;utf-8&quot;&gt;" checked="true" value="1" persist="checked"/>
+		<checkbox id="void" label="&lt;void&gt;" value="1" checked="true" persist="checked"/>
+		<checkbox id="minimised" label="&lt;element attribute&gt;" value="1" checked="true" persist="checked"/>
+	</groupbox>
+
+	<groupbox id="sections">
+		<caption>Section Elements</caption>
+
+		<checkbox id="id" label="&lt;div id=&quot;section&quot;&gt;" value="1" persist="checked"/>
+		<checkbox id="class" label="&lt;div class=&quot;section&quot;&gt;" value="1" persist="checked"/>
+	</groupbox>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script type="application/x-javascript">
+/* exported setSource, setDestination, setAccept, init, initMore */
+		function getParms() {
+			var result= {
+				doctype:document.getElementById('doctype').checked,
+				lang:document.getElementById('lang').checked,
+				charset:document.getElementById('charset').checked,
+				'void':document.getElementById('void').checked,
+				minimised:document.getElementById('minimised').checked,
+				id:document.getElementById('id').checked,
+				'class':document.getElementById('class').checked,
+			};
+			return result;
+		}
+	</script>
+</dialog>

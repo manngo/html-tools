@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+<!-- http://jsbeautifier.org/ -->
+
+<!--
+	https://github.com/einars/js-beautify
+		-s	––indent-size			Indentation size [4]
+		-c	––indent-char			Indentation character [" "]
+		-b	––brace-style			[collapse|expand|end-expand] ["collapse"]
+		-S	––indent-scripts		[keep|separate|normal] ["normal"]
+		-W	––max-char				Maximum characters per line (0 disables) [250]
+		-U	––unformatted			List of tags (defaults to inline) that should not be reformatted
+-->
+<dialog
+	id="dialog-heading"
+	title="htmlBeautify"
+	orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+		<groupbox>
+			<groupbox>
+				<label>Indent Character</label>
+				<radiogroup id="indent_char">
+					<radio id="tab" value="9" label="Use Tabs" selected="true" persist="selected"/>
+					<radio id="spaces" value="32" label="Use Space" persist="selected"/>
+				</radiogroup>
+				<box id='indent_size_box'>
+					<textbox id="indent_size" value="1" width="24" persist="value"/>
+					<label id="indent_label" control="indent_size">Indent Size</label>
+				</box>
+			</groupbox>
+
+			<groupbox>
+				<checkbox id="preserve_newlines" label="Preserve New Lines" value="1" persist="checked"/>
+				<box id='max_preserve_newlines_box'>
+					<textbox id='max_preserve_newlines' value='4' width="24"/>
+					<label control='max_preserve_newlines'>Maximum Number of Line Breaks to be preserved in One Chunk</label>
+				</box>
+				</groupbox>
+
+			<groupbox>
+				<label>Brace Style</label>
+				<radiogroup id="brace_style">
+					<radio id="collapse" value="collapse" label="Collapse (Same line as control)" selected="true" persist="selected"/>
+					<radio id="expand" value="expand" label="Expand (Braces on Own Line)" persist="selected"/>
+					<radio id="end-expand" value="end-expand" label="End Expand (Last Brace on Own Line)" persist="selected"/>
+				</radiogroup>
+			</groupbox>
+
+			<groupbox>
+				<label>Indent Scripts</label>
+				<radiogroup id="indent_scripts">
+					<radio id="keep" value="keep" label="Keep" persist="selected"/>
+					<radio id="separate" value="separate" label="Separate" persist="selected"/>
+					<radio id="normal" value="normal" label="Normal" selected="true" persist="selected"/>
+				</radiogroup>
+			</groupbox>
+
+			<groupbox>
+				<box>
+					<textbox id="max_char" value="250" persist="value" width="36"/>
+					<label control='max_char'>Maximum Line Length (0 is unlimited)</label>
+				</box>
+			</groupbox>
+
+			<groupbox>
+				<box id="unformatted_box" orient="vertical">
+					<label id="unformatted_label" control="unformatted">Leave Unformatted:</label>
+					<textbox id="unformatted" value="" width="24" rows="4" persist="value" multiline="true" />
+				</box>
+				<box id="unformatted_box">
+					<checkbox id="assume_default" label="Assume Default" value="1" persist="checked"/>
+					<button id="insert_default" label="Insert Default" width="120"/>
+				</box>
+			</groupbox>
+
+		</groupbox>
+
+		<script type="application/x-javascript" src="chrome://html-tools/content/beautify/js/beautify-html.js" />
+		<script type="application/x-javascript" src="chrome://html-tools/content/beautify/js/utility.js" />
+		<script type="application/x-javascript" src="chrome://html-tools/content/beautify/js/beautify-html-script.js" />
+
+</dialog>

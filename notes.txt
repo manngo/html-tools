@@ -1,0 +1,45 @@
+Further Reading:
+
+My Posts:
+
+Saving Cusom Preferences | ActiveState Community Site	http://community.activestate.com/node/10569
+Dynamic Menu Items | ActiveState Community Site	http://community.activestate.com/node/10574
+XUL URL Link to open in browser. | ActiveState Community Site	http://community.activestate.com/node/10520
+Setting Language Preferences | ActiveState Community Site	http://community.activestate.com/node/10458
+Addon Find & Replace | ActiveState Community Site	http://community.activestate.com/node/9808
+Addon referencing a document window | ActiveState Community Site	http://community.activestate.com/node/9801
+Submitting an Addon | ActiveState Community Site	http://community.activestate.com/node/9512
+Saving Settings | ActiveState Community Site	http://community.activestate.com/node/9243
+Dynamic Menus | ActiveState Community Site	http://community.activestate.com/node/9244
+
+koIPrefs.idl	http://www.smithholmes.org/Disk%20Image/APPLICATIONS/Komodo%20Edit.app/Contents/SharedSupport/sdk/idl/koIPrefs.idl
+koIOrderedPreference.idl	https://github.com/Komodo/KomodoEdit/blob/trunk/src/prefs/koIOrderedPreference.idl
+
+
+See Also
+
+		Getting / Setting a Komodo preference | ActiveState Community Site
+		http://community.activestate.com/faq/getting-setting-komodo-preference
+
+
+
+10 Things They Never Tell You In Firefox Extension School
+
+	Submitting the Extension:
+		http://support.activestate.com/node/add/xpi
+
+		http://www.sitepoint.com/ten-tips-firefox-extensions/
+
+	https://developer.mozilla.org/en/XUL_Tutorial/Creating_Dialogs
+	https://developer.mozilla.org/en/Code_snippets/Dialogs_and_Prompts
+
+	https://developer.mozilla.org/en/DOM/window.openDialog
+	http://groups.google.com/group/netscape.public.dev.xul/msg/02075a1736406b40
+
+	/Volumes/html/101courseware.net/www/tools/content/styles.css
+
+<?xml-stylesheet type="text/css" href="data:text/css,
+.test {
+	color: red;
+}
+" ?>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Beautify"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Beautify</html:h2>
+							<html:p>A set of tools to clean up your code.<html:br/>
+								See <span class="link">http://jsbeautifier.org</span></html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>JavaScript</html:th>
+						<html:td>
+							<html:p>
+								Fixes up your JavaScript Code, either in a separate file or embedded in HTML.
+							</html:p>
+							<html:p>
+								The main point of this is to tidy up your spacing. Essentially, this addresses:
+							</html:p>
+							<html:ul>
+								<html:li>Indenting with Tabs or Spaces</html:li>
+								<html:li>Fixing indentation for all nested blocks</html:li>
+								<html:li>Tidying up the braces</html:li>
+								<html:li>A few miscellaneous settings</html:li>
+							</html:ul>
+							<html:p>
+								The options in the dialog box are from the web site.
+								You can learn more about the options there.
+							</html:p>
+							<html:p>
+								The JavaScript Beautifier was written by Einar Lielmanis
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>CSS</html:th>
+						<html:td>
+							<html:p>
+								Fixes up your CSS Code, either in a separate file or embedded in HTML.
+							</html:p>
+							<html:p>
+								The main point of this is to tidy up your spacing and Indenting.
+							</html:p>
+							<html:p>
+								The options in the dialog box are from the web site.
+								You can learn more about the options there.
+							</html:p>
+							<html:p>
+								The CSS Beautifier was written by Harutyun Amirjanyan, based on Einar Lielmanis’s code.
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>HTML</html:th>
+						<html:td>
+							<html:p>
+								Fixes up your HTML Code.
+							</html:p>
+							<html:p>
+								The main point of this is to tidy up your spacing and Indenting.
+							</html:p>
+							<html:p>
+								The options in the dialog box are from the web site.
+								You can learn more about the options there.
+							</html:p>
+							<html:p>
+								The CSS Beautifier was written by Nochum Sossonko, based on Einar Lielmanis’s code.
+							</html:p>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

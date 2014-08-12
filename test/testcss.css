@@ -1,0 +1,15 @@
+	div#main { padding: .5em 1em;}
+
+article {
+padding: 0px 0px;
+margin: 0px auto;
+background-color: #eee;
+}
+article h1, h2 {
+font-family: Arsenal;
+color: #666;
+margin: 0px;
+}
+ article h1 {font-size: 200%;-moz-text-shadow: 0px 1px white;-webkit-text-shadow: 0px 1px white;
+		text-shadow: 0px 1px white;}
+	article h2 {font-size: 140%;}article p {margin: 0px 0px .5em 0px;}

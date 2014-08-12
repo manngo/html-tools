@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Quick Setup"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Quick Web Setup</html:h2>
+							<html:p>Komodo Edit comes witha a large set of options. However, some are more common than others.<html:br/>
+								Quick Web Setup focusses on a subset of options in which a Web Developer is most likely to be interested.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Quick Web Setup</html:th>
+						<html:td>
+							<html:p>
+								Configures a simple subset of Komodo Edit options.
+							</html:p>
+							<html:p>
+								The dialog begins by reading your existing options.<html:br/>
+								If you wish, you can adjust a few of the options and select OK.
+							</html:p>
+							<html:p>
+								If you select the <span class="button">Simple Prefs</span> button,
+								the options will be set to the settings<html:br/>most Web Developers would choose.<html:br/>
+								You can then select OK as before.
+							</html:p>
+							<html:p>
+								<html:strong>Note:</html:strong> The options to select Web Languages and to Show All Files
+								do <html:em>not</html:em> read existing options.<html:br/>If you select them, they will
+								overwrite your current settings.
+							</html:p>
+							<html:p>
+								The language settings perform two tasks:
+							</html:p>
+							<html:ul>
+								<html:li>First, they select which languages appear in the short menu of languages.<html:br/>
+									Unfortunately, you will need to restart Komodo Edit for this to become effective.</html:li>
+								<html:li>Second, all of the tab and encoding preference will be applied to these languages.</html:li>
+							</html:ul>
+
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

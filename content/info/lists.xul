@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Lists"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Lists</html:h2>
+							<html:p>These tools will convert plain text to a list.</html:p>
+							<html:p>To use, select some plain text and choose one of the menu items to convert.<html:br/>
+								Optionally you may include an id or a class name.</html:p>
+							<html:ul>
+								<html:li>For Lists, put each item on a separate line.<html:br/>
+									If you choose the indented option, use TAB to indent.</html:li>
+							</html:ul>
+							<html:p>The selected text will be replaced with the converted code.<html:br/>
+								Alternatively, you can copy the converted code to the clipboard.</html:p>
+							<html:p>The clipboard icon beside the samples allow you to make a copy of the sample itself.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Make List</html:th>
+						<html:td>
+							<html:p>
+								Converts multiple lines to Ordered, Unordered or Description (Definition) List.
+							</html:p>
+							<html:p>
+								Each item is on a separate line. In the case of Description Lists, this applies to terms<html:br/>
+								as well as descriptions.<html:br/>
+							</html:p>
+
+							<html:h3>Ordered &amp; Unordered Lists</html:h3>
+							<html:p>
+								Each line will be a single list item. Choose whether the list is unordered (ul) or ordered (ol)
+							</html:p>
+							<html:p>
+								The list may be nested. Yo do this by
+							</html:p>
+							<html:ol>
+								<html:li>Indenting the the nested items with a tab</html:li>
+								<html:li>Selecting the Nested option</html:li>
+							</html:ol>
+
+							<html:h3>Description (Definition) Lists</html:h3>
+							<html:p>
+								Description Lists are what used to be called Definition Lists
+							</html:p>
+							<html:p>
+								Each line represents either a Term (dt) or a description (dd).<html:br/>
+								If you don’t use nesting, it will be assumed that terms and descriptions alternate.<html:br/>
+								The list may be nested. Yo do this by
+							</html:p>
+							<html:ol><html:li>Strarting the the nested items with a tab</html:li><html:li>Selecting the Nested option</html:li></html:ol>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

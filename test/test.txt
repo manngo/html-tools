@@ -1,0 +1,235 @@
+Paragraphs
+============================================================
+
+		The cat sat on the mat and that is that.
+		The frog sat on the log and watched the bog.
+
+
+Heading
+============================================================
+
+		This is a heading
+
+Tables
+============================================================
+
+a	b	c	d	e
+f	g	h	i	j
+k	l	m	n	o
+p	q	r	s	t
+u	v	w	x	y
+
+a,b,c,d,e
+f,g,h,i,j
+k,l,m,n,o
+p,q,r,s,t
+u,v,w,x,y
+
+
+Simple List
+============================================================
+
+		apple
+		banana
+		cherry
+		donut
+
+Nested Simple List
+============================================================
+
+fruit
+	apple
+	banana
+	cherry
+animals
+	aardvark
+	badger
+	cheeta
+instruments
+	accordion
+	banjo
+	clarinet
+
+Description List
+============================================================
+
+One
+The first, primary, initial beginning
+Two
+The second, junior, also-ran
+Three
+The third, tertiary, bronze medallist
+
+Nested Description List
+============================================================
+
+fruit
+	apple
+	banana
+	cherry
+animals
+	aardvark
+	badger
+	cheeta
+instruments
+	accordion
+	banjo
+	clarinet
+
+Local Image
+============================================================
+
+
+
+?Wrap Element
+============================================================
+
+The cat sat on the mat and that is that.
+This is more stuff.
+
+Convert to HTML Entities
+============================================================
+
+this is a<b & b>c
+
+“Smart” Quotes
+============================================================
+
+"This is a 'test'" last quote's "intereresting"
+“This is a ‘test’” last quote’s “intereresting”
+
+Make Anchors
+============================================================
+
+		First	http://one.example.net
+		Second	http://two.example.net
+		Three	http://three.example.net
+		Fourth	http://four.example.net
+
+		http://one.example.net		First
+		http://two.example.net		Second
+		http://three.example.net	Three
+		http://four.example.net		Fourth
+
+Make Form
+============================================================
+
+
+
+?Input Element
+To do: add paceholder, required, patterm
+============================================================
+
+
+
+
+?Make Fieldset
+============================================================
+
+<label>Name<input type="text" name="name"></label>
+<label>Email<input type="text" name="email"></label>
+
+?Make Label
+============================================================
+
+<label>LABEL<br>
+<input type="text" name="name"></label>
+
+?Make Button
+============================================================
+
+Make Form
+============================================================
+
+
+Convert to Radio Button Group
+============================================================
+
+<label><input type="radio" name="" value="t1"/>h1</label>
+<label><input type="radio" name="" value="t2"/>h2</label>
+<label><input type="radio" name="" value="t3"/>h3</label>
+<label><input type="radio" name="" value="t4"/>h4</label>
+
+
+d
+f
+f
+df
+<button type="reset" name="y">OK</button><button type="submit" name="qwer">OK</button>
+
+
+
+<form method="post" action="here">
+
+</form>
+
+
+
+
+To Test:
+	smart quotes
+	forms
+	fieldset
+	label
+	button
+
+
+
+
+apple
+banana
+cherry
+
+t1	h1
+t2	h2
+t3	h3
+t4	h4
+
+This is a test
+<button type="submit" name="q" id="w">OK</button>
+animals
+	aardvark
+	badger
+fruit
+	apple
+	banana
+instruments
+	accordion
+	banjo
+etc
+
+
+<label><input type="radio" name="" value="a"/>b</label>
+<label><input type="radio" name="" value="x"/>d</label>
+
+
+<html>\n\t<body>\n\t\t<template>?</template>\t\t\tAsk for text & Replace\n\t\t<template>=</template>\t\t\tAsk for file & Replace\n\t\t<template>=file</template>\t\tReplace with named file\n\n\t\t<!--template> … </template-->\n\t</body>\n</html>\n
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<table>
+		<thead>
+			<tr></tr>
+		</thead>
+		<tbody>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tfoot>
+			<tr></tr>
+		</tfoot>
+	</table>
+	<h2></h2>
+	<p></p>
+	<p></p>
+</body>
+</html>

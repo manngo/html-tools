@@ -1,0 +1,13 @@
+#	chrome.manifest
+
+content html-tools jar:html-tools.jar!/content/
+#skin html-tools classic/1.0 jar:html-tools.jar!/skin/
+#locale html-tools en-US jar:html-tools.jar!/locale/en-US/
+
+overlay chrome://komodo/content/komodo.xul chrome://html-tools/content/main.xul
+
+#content html-tools content/
+#skin html-tools /skin/
+#locale html-tools /locale/en-US/
+
+#overlay chrome://komodo/content/komodo.xul /nfs/html/manngo.net/addons/koHTMLTools/content/main.xul

@@ -1,0 +1,68 @@
+<?xml version='1.0'?>
+<overlay
+	id='test'
+	xmlns:html='http://www.w3.org/1999/xhtml'
+	xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+
+	<script type='application/x-javascript' src='chrome://xtk/content/xtk.js' />
+	<script>
+	</script>
+
+	<!-- Sample -->
+	<groupbox id="sample"><caption label="Sample"/>
+		<box><button id="copy-source" class="copy" onclick="copyText(this);"/><label>Source</label></box>
+		<!--textbox id="help-source" class='sample pre' maxwidth="300" multiline="true" onoverflow="this.height = this.inputField.scrollHeight+12;"/-->
+		<description id='help-source' class='sample pre' maxwidth="300">source</description>
+
+		<box><button id='copy-destination' class='copy' onclick='copyText(this);'/><label>Result</label></box>
+		<description id='help-destination' class='sample pre' maxwidth="300">Result</description>
+
+		<box><button id='update-destination' onclick='setDestination();' label="Update Result"/></box>
+
+	</groupbox>
+
+	<!-- Update Sample -->
+	<groupbox id='update'><caption label='Sample'/>
+		<box><button id='update-destination' onclick='setDestination();'/><label>Update</label></box>
+	</groupbox>
+
+	<!-- id & class text box -->
+	<groupbox id='idclass'>
+		<box id='idbox'>
+			<label control='id' width='32'>id</label>
+			<textbox id='id' value='' />
+		</box>
+		<box id='classbox'>
+			<label control='class' width='32'>class</label>
+			<textbox id='class' value='' />
+		</box>
+	</groupbox>
+
+	<!-- xhtml checkbox -->
+	<checkbox id='xhtml' label='XHTML Format' checked='false' value='1' persist='checked'/>
+
+	<!-- OK Cancel Buttons -->
+	<groupbox id="okcancelbuttonsonly">
+		<box>
+			<description id="status"></description>
+		</box>
+		<hbox>
+			<spacer flex='1'/>
+			<button dlgtype="cancel"/>
+			<button dlgtype="accept"/>
+		</hbox>
+	</groupbox>
+	<groupbox id="okcancelbuttons">
+		<box>
+			<description id="status"></description>
+		</box>
+		<hbox>
+			<checkbox id="copy" label="Copy to Clipboard" value="1" persist="checked"/>
+			<spacer flex='1'/>
+			<button dlgtype="cancel"/>
+			<button dlgtype="accept"/>
+		</hbox>
+	</groupbox>
+
+
+</overlay>

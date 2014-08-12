@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-heading"
+    title="Convert Document Tabs"
+    orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	qonload="init();"
+	>
+
+	<groupbox id="details">
+		<groupbox>
+			<box id='idbox'>
+				<label control='oldwidth' width='56'>Old Width</label>
+				<textbox id='oldwidth' value='4' width="24"/>
+			</box>
+			<box id='classbox'>
+				<label control='tabwidth' width='56'>Tab Width</label>
+				<textbox id='tabwidth' value='4'  width="24"/>
+			</box>
+		</groupbox>
+
+	<checkbox id="utf8" label="Convert to UTF-8" value="1" persist="checked"/>
+	<checkbox id="tabs" label="Use Tabs" value="1" persist="checked"/>
+
+	</groupbox>
+
+	<script type="application/x-javascript">
+/* exported setSource, setDestination, setAccept, init, initMore */
+
+		function entabulate(parms) {
+			var ko=window.opener.ko;
+			var cv = ko.views.manager.currentView;
+			var koDoc=cv.koDoc;
+			if (koDoc.encoding.short_encoding_name != "UTF-8") {
+				koDoc.setEncodingFromEncodingName("UTF-8");
+			}
+			koDoc.indentWidth = parms.tabwidth;
+			koDoc.tabWidth = parms.tabwidth;
+			koDoc.useTabs = parms.tabs;
+
+			var editor = cv.scimoz;
+			var regex=new RegExp(' {'+parms.oldwidth+'}','g');
+
+			editor.text=editor.text.replace(/^\t*( +)/gm,function(a,b,c) {
+				return a.replace(regex,'\t');
+			});
+		}
+
+		function doOK() {
+			entabulate(getParms());
+			return true;
+		}
+		function doCancel() {
+			return true;
+		}
+
+		function getParms() {
+			return {
+				oldwidth:document.getElementById('oldwidth').value,
+				tabwidth:document.getElementById('tabwidth').value,
+				utf8:document.getElementById('utf8').checked,
+				tabs:document.getElementById('tabs').checked,
+			};
+		}
+	</script>
+</dialog>

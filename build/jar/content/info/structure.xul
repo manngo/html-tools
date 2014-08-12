@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Structure"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>HTML Structure</html:h2>
+							<html:p>This will generate an HTML structure from an indented list of elements.<html:br/>
+									This is useful for starting a new layout.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td colspan="2">
+							<html:p>
+								To generate a new structure:
+							</html:p>
+							<html:ul>
+								<html:li>List the layout elements, indenting for nested elements:
+									<html:pre>
+div#wrapper
+	header
+	div#content
+		main
+			article
+			aside
+		nav
+footer
+									</html:pre>
+								</html:li>
+								<html:li>
+									<html:p>
+										Select the list
+									</html:p>
+								</html:li>
+								<html:li>
+									<html:p>
+										Choose one of the options (below).
+									</html:p>
+								</html:li>
+								<html:li>
+									<html:p>
+										The result will be something like:
+									</html:p>
+									<html:pre>&lt;div id="wrapper"&gt;
+	&lt;header&gt;
+	&lt;/header&gt;
+	&lt;div id="content"&gt;
+		&lt;main&gt;
+			&lt;article&gt;
+			&lt;/article&gt;
+			&lt;aside&gt;
+			&lt;/aside&gt;
+		&lt;/main&gt;
+		&lt;nav&gt;
+		&lt;/nav&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+&lt;/footer&gt;</html:pre>
+								</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+
+				</html:table>
+
+				<html:table>
+					<html:tr>
+						<html:th>Elements</html:th>
+						<html:td>
+							<html:p>Elements may be written in the following form:</html:p>
+							<html:pre>element#id.class:place holder text</html:pre>
+							<html:ul>
+								<html:li>element - HTML tag</html:li>
+								<html:li>#id - optional id</html:li>
+								<html:li>.class - optional class name</html:li>
+								<html:li>:place holder - optional text which may be used as a place holder</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Options</html:th>
+						<html:td>
+							<html:ul>
+								<html:li>Place Holder: tag to contain place holder text</html:li>
+								<html:li>Include non-empty: use place holders even if element contains other elements.</html:li>
+								<html:li>Include HTML outline: generate a complete HTML5 outline.</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Others"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Other HTML Code</html:h2>
+							<html:p>The selected text will be replaced with the converted code.<html:br/>
+								ALternatively, you can copy the converted code to the clipboard.</html:p>
+							<html:p>The clipboard icon beside the samples allow you to make a copy of the sample itself.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Make Anchors</html:th>
+						<html:td>
+							<html:p>
+								Converts lines of text/href pairs to a list of anchors.
+							</html:p>
+							<html:p>
+								Each line contains a single text/href pair for conversion. Between text and href is a single tab.<html:br/>
+								Select whether the text or href comes first in the pair.<html:br/>
+							</html:p>
+							<html:p>
+								Note that this is not (yet) an ordered or unordered list. <html:br/>
+								If you what that, you should use this first, without breaks, and then convert the result. <html:br/>
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Add Local Image</html:th>
+						<html:td>
+							<html:p>
+								Adds an &lt;img&gt; tag and simplifies setting some attributes.
+							</html:p>
+							<html:p>
+								To begin with, a dialog box alows you to select a local image.<html:br/>
+								You can also select one later on.
+							</html:p>
+							<html:p>
+								Note that it is up to you to select an image within the web root.
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Add Link</html:th>
+						<html:td>
+							<html:p>
+								Adds either a &lt;link&gt; element for an attached style sheet<html:br/>
+								or a &lt;script&gt; element for an attached JavaScript file.
+							</html:p>
+							<html:h3>
+								CSS
+							</html:h3>
+							<html:p>
+								CSS is attached using a &lt;link&gt; element.<html:br/>
+								You will need to select or enter a CSS file for the href attribute.
+							</html:p>
+							<html:p>
+								The rel attribute should be either "stylesheet" or "alternate stylesheet".<html:br/>
+								The title is optional, but more relevant for alternate stylesheets.
+							</html:p>
+							<html:p>
+								The media type is commonly one in the drop-down menu. No media type implies "all".<html:br/>
+								If you choose “other”, you can enter your own media type. This includes media queries.
+							</html:p>
+							<html:h3>
+								JavaScript
+							</html:h3>
+							<html:p>
+								JavaScript is attached using a &lt;script&gt; element.<html:br/>
+								You will need to select or enter a JavaScript file for the src attribute.
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Add Anchor</html:th>
+						<html:td>
+							<html:p>
+								Adds an anchor tag and simplifies setting some attributes.
+							</html:p>
+							<html:p>
+								To begin with, a dialog box alows you to select a file to be linked.<html:br/>
+								You can also select one later on.
+							</html:p>
+							<html:p>
+								The text is the text of the anchor.
+							</html:p>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

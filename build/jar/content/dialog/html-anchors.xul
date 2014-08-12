@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<!--
+	https://developer.mozilla.org/en/XUL_Tutorial/Creating_Dialogs
+	https://developer.mozilla.org/en/Code_snippets/Dialogs_and_Prompts
+	https://developer.mozilla.org/en/DOM/window.openDialog
+	http://groups.google.com/group/netscape.public.dev.xul/msg/02075a1736406b40
+-->
+<dialog
+    id="dialog-table"
+    title="Convert to Anchors"
+    orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	buttons="accept,cancel"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload='init();'
+	>
+
+	<groupbox flex="1">
+		<radiogroup id="reverse">
+			<radio id="text" value="0" label="text href" persist="selected"/>
+			<radio id="href" value="1" label="href text" selected="true" persist="selected"/>
+		</radiogroup>
+	</groupbox>
+	<groupbox>
+		<checkbox id="br" label="use &lt;br&gt;" value="1" persist="checked"/>
+		<groupbox>
+			<checkbox id="xhtml"/>
+		</groupbox>
+	</groupbox>
+	<groupbox>
+		<checkbox id="comma" label="use commas" value="1" persist="checked"/>
+	</groupbox>
+
+	<groupbox id="sample"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+		var xhtml=document.getElementById('xhtml');
+		xhtml.onclick=function() {
+			setDestination();
+		};
+		var comma=document.getElementById('comma');
+		var reverse=document.getElementById('reverse');
+		var br=document.getElementById('br');
+
+		xhtml.setAttribute('disabled',!br.checked);
+		br.onclick=function() {
+			xhtml.setAttribute('disabled',!br.checked);
+			setDestination();
+		};
+
+		function setSource() {
+			if(comma.checked) source.value = reverse.value == 0
+								?	'First,http://one.example.net\nSecond,http://two.example.net\nThird,http://three.example.net'
+								:	'http://one.example.net,First\nhttp://two.example.net,Second\nhttp://three.example.net,Third';
+			else source.value = reverse.value == 0
+								?	'First\thttp://one.example.net\nSecond\thttp://two.example.net\nThird\thttp://three.example.net'
+								:	'http://one.example.net\tFirst\nhttp://two.example.net\tSecond\nhttp://three.example.net\tThird';
+		}
+		function setDestination() {
+			destination.textContent=makeAnchors(source.value,getParms());
+		}
+
+		document.getElementById('comma').onclick=
+		document.getElementById('text').onclick=
+		document.getElementById('href').onclick=
+			function() {
+				setSource();
+				setDestination();
+		};
+
+		function getParms() {
+			return {
+				'reverse':parseInt(document.getElementById("reverse").value,10),
+				'br':br.checked,
+				'comma':comma.checked,
+				'xhtml':xhtml.checked,
+			};
+		}
+
+	</script>
+</dialog>

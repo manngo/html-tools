@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Document"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Other Document Tools</html:h2>
+							<html:p>These tools will convert your document.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Entabulate Document</html:th>
+						<html:td>
+							<html:p>
+								Sets up tab &amp; indentation settings.
+							</html:p>
+							<html:p>
+								Also sets document to prefer tabs.<html:br/>
+								Converts multiple spaces to tabs as per above.<html:br/>
+								Where we’re at it, convert the file to UTF-8.
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Convert to HTML5</html:th>
+						<html:td>
+							<html:p>
+								Converts document to HTML5.
+							</html:p>
+							<html:p>
+								This supplies a new DOCTYPE, removes trailing slashes for void (empty) elements,
+									and removes reduntant values for boolean attributes.
+							</html:p>
+							<html:p>
+								This will also allow you to convert divs with an id or class to a corresponding sectioning element.<html:br/>
+								Currently, this includes header, footer, section, article, nav and main.
+							</html:p>
+							<html:p>
+								Note: This is incomplete. It may also miss some code which proves to be<html:br/>unpredicatable.<html:br/>
+								Finally, the result will probably require some re-formatting, such as with HTMLBeautify.
+							</html:p>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

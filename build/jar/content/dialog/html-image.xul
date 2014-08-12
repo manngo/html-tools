@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-paragraphs"
+    title="Add Local Image"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<groupbox id="details">
+		<box>
+			<label control="alt" width="32">img</label>
+			<vbox>
+				<textbox id="src" value=""  width="180"/>
+				<button label="Choose File …" oncommand="getImageFile();"/>
+			</vbox>
+		</box>
+		<groupbox>
+				<box>
+					<label control="alt" width="32">alt</label>
+					<textbox id="alt" value="" />
+				</box>
+				<box>
+					<label control="title" width="32">title</label>
+					<textbox id="title" value="" />
+				</box>
+		</groupbox>
+		<groupbox>
+				<box>
+					<label control="width" width="32">width</label>
+					<textbox id="width" value="" />
+				</box>
+				<box>
+					<label control="height" width="32">height</label>
+					<textbox id="height" value="" />
+				</box>
+		</groupbox>
+	</groupbox>
+
+	<groupbox id="sample"/>
+	<groupbox id="idclass" />
+	<checkbox id="xhtml"/>
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+/* exported setSource, setDestination, setAccept, init */
+		function getParms() {
+			return {
+				src:document.getElementById("src").value,
+				alt:document.getElementById("alt").value,
+				title:document.getElementById("title").value,
+				width:document.getElementById("width").value,
+				height:document.getElementById("height").value,
+				xhtml:document.getElementById("xhtml").checked,
+				id:document.getElementById("id").value,
+				className:document.getElementById("class").value
+			};
+		}
+
+		function setSource() {
+			putSource('Select [Choose File …] for the src');
+		}
+
+		function setDestination() {
+			putDestination(addImage(getParms()));
+			window.sizeToContent();
+		}
+
+		function getImageFile() {
+			var file='';
+			var nsIFilePicker = Components.interfaces.nsIFilePicker;
+			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+
+			fp.appendFilter("Image Files","*.png; *.jpg; *.jpeg; *.gif");
+			fp.init(window, "Select a File", nsIFilePicker.modeOpen);
+			var result=fp.show();
+			if (result != nsIFilePicker.returnCancel) {
+				file = fp.file.path;
+				file = relative(file,window.arguments[0].inn.cwd);
+			}
+			document.getElementById('src').value=file;
+			var image=new Image();
+			image.src='file://'+fp.file.path;
+			image.onload=function() {
+				document.getElementById('width').value=image.width;
+				document.getElementById('height').value=image.height;
+			};
+			setDestination();
+		}
+
+		function init() {
+			dialogInit();
+			setSetDestination(['alt','title','width','height','src']);
+			document.getElementById('xhtml').onclick=setDestination;
+
+			getImageFile();
+		}
+
+	</script>
+</dialog>

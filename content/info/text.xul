@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Text"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Other Text Tools</html:h2>
+							<html:p>These tools will convert your selected text or document.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Smart Quotes</html:th>
+						<html:td>
+							<html:p>
+								Converts quotes in selection to Typographic quotes.
+							</html:p>
+							<html:p>
+								This includes “double” and ‘single’ quotes, as well as apostropes.<html:br/>
+								UTF-8 is required to make this work.
+							</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Entify</html:th>
+						<html:td>
+							<html:p>
+								Converts selection to HTML entity names.
+							</html:p>
+							<html:p>
+								Only the most essential (&lt; &amp; etc) are converted.<html:br/>
+								UTF-8 can handle the other characters.
+							</html:p>
+
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

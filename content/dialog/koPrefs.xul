@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-prefs"
+    title="Quick Web Setup"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+<hbox>
+	<groupbox>
+		<groupbox>
+			<caption label="Appearance" />
+			<box>
+				<label control='mruProjectSize' width='96'>Recent Projects</label>
+				<textbox id='mruProjectSize' width="32"/>
+			</box>
+			<box>
+				<label control='mruFileSize' width='96'>Recent Files</label>
+				<textbox id='mruFileSize' width="32"/>
+			</box>
+			<checkbox id="show_start_page" label="Show Start Page" value="1"/>
+		</groupbox>
+
+		<groupbox>
+			<caption label="Code Intelligence" />
+			<checkbox id="codeintelAutoInsertEndTag" label="HTML End Tags" value="1"/>
+		</groupbox>
+
+		<groupbox>
+			<caption label="Internationalization" />
+			<checkbox id="encodingEnvironment" label="Use OS Encoding" value="0"/>
+			<box>
+				<label control='encodingDefault' width='96'>Default Encoding</label>
+				<textbox id='encodingDefault' width="48"/>
+			</box>
+		</groupbox>
+		<groupbox>
+			<caption label="Languages" />
+			<groupbox>
+				<caption label="Current Languages" />
+				<description id="primaryLanguages" width="300"></description>
+			</groupbox>
+
+			<checkbox id="setPrimary" label="Use Main Web Languages:" checked="true" value="1"/>
+			<box>
+				<description id="listPrimaryLanguages"></description>
+			</box>
+			<checkbox id="setSecondary" label="More Web Languages:" checked="false" value="1"/>
+			<box>
+				<description id="listSecondaryLanguages"></description>
+			</box>
+		</groupbox>
+		<groupbox>
+			<caption label="Places" />
+			<checkbox id="showAllFiles" label="Show All Files" value="1"/>
+		</groupbox>
+
+<!--		<groupbox>
+			<caption label="Browser Preview" />
+			<menulist id="browser_preview_method">
+			  <menupopup>
+				<menuitem label="Komodo Tab, Other Split View" value="in-tab-other-group" selected="true"/>
+				<menuitem label="Komodo Tab, Same Split View" value="in-tab-same-group"/>
+				<menuitem label="Separate Komodo Dialog" value="in-separate-dialog"/>
+				<menuitem label="Default Browser" value="external"/>
+			  </menupopup>
+			</menulist>
+		</groupbox>
+-->
+
+	</groupbox>
+
+	<groupbox>
+		<caption label="Editor" />
+		<groupbox>
+			<checkbox id="showWhitespace" label="Show White Space" value="1"/>
+			<checkbox id="showEOL" label="Show End of Line" value="1"/>
+			<checkbox id="showLineNumbers" label="Show Line Numbers" value="1"/>
+			<checkbox id="editShowMinimap" label="Show MiniMap" value="1"/>
+			<checkbox id="editEnableMouseZoom" label="Enable Mouse Zoom" value="1"/>
+			<groupbox>
+				<caption label="Indentation" />
+				<checkbox id="useTabs" label="Use Tabs" value="1"/>
+				<checkbox id="editElectricBrace" label="Auto Position Closing Brace (?)" value="1"/>
+				<checkbox id="showIndentationGuides" label="Show Indentation Guides" value="1"/>
+				<box>
+					<label control='indentWidth' width='96'>Indent Width</label>
+					<textbox id='indentWidth' width="32"/>
+				</box>
+				<box>
+					<label control='tabWidth' width='96'>Tab Width</label>
+					<textbox id='tabWidth' width="32"/>
+				</box>
+			</groupbox>
+			<groupbox>
+				<caption label="Smart Editing" />
+				<checkbox id="enableAutoAbbreviations" label="Enable Auto Abbreviations" value="1"/>
+			</groupbox>
+			<groupbox>
+				<caption label="Save Options" />
+				<checkbox id="cleanLineEnds" label="Clean Line Endings" value="1"/>
+				<checkbox id="ensureFinalEOL" label="Ensure Final EOL" value="1"/>
+				<box>
+					<label control='autoSaveSeconds'>AutoSave Seconds</label>
+					<textbox id='autoSaveSeconds' width="32"/>
+				</box>
+			</groupbox>
+		</groupbox>
+	</groupbox></hbox>
+	<groupbox>
+		<box>
+			<description id="status"></description>
+		</box>
+		<hbox>
+			<button id="simple" label="Simple Prefs" onclick="return setPrefs(defaultKOPrefs());"/>
+			<spacer flex='1'/>
+			<button dlgtype="cancel"/>
+			<button dlgtype="accept"/>
+		</hbox>
+	</groupbox>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/koprefs.js" />
+
+	<script>
+//<![CDATA[
+/* exported setSource, setDestination, setAccept, init, initMore */
+		var currentPrefs;
+		var prefs={};
+		var elements={};
+		var i;
+
+		function setPrefs(prefs) {
+			var i;
+			for(i in prefs) {
+				if(prefs.hasOwnProperty(i) && document.getElementById(i)) {
+					elements[i]=document.getElementById(i);
+					switch(prefs[i].type) {
+						case 'boolean':
+							elements[i].checked=!!prefs[i].value;
+							break;
+						case 'long':
+							elements[i].value=prefs[i].value;
+							break;
+						case 'string':
+							elements[i].value=prefs[i].value;
+							break;
+						case 'array':
+							elements[i].value=prefs[i].value.join(';');
+							break;
+					}
+				}
+			}
+		}
+
+		function getPrefs() {
+			var i;
+			var thePrefs={};
+			for(i in currentPrefs) {
+				if(elements.hasOwnProperty(i)) {
+					switch(currentPrefs[i].type) {
+						case 'boolean':
+							thePrefs[i]=elements[i].checked;
+							break;
+						case 'long':
+							thePrefs[i]=elements[i].value;
+							break;
+						case 'string':
+							thePrefs[i]=elements[i].value;
+							break;
+					}
+				}
+			}
+			return thePrefs;
+		}
+
+		function initMore() {
+			currentPrefs=getKOPrefs();
+			setPrefs(currentPrefs);
+			document.getElementById('primaryLanguages').textContent=getPrimaryLanguages().join('; ');
+			var languages=listPrimaryLanguages();
+			document.getElementById('listPrimaryLanguages').value=languages[0];
+			document.getElementById('listSecondaryLanguages').value=languages[1];
+		}
+
+		function getParms() {
+			var thePrefs=getPrefs();
+			thePrefs['setPrimary']=document.getElementById('setPrimary').checked;
+			thePrefs['setSecondary']=document.getElementById('setSecondary').checked;
+			thePrefs['showAllFiles']=document.getElementById('showAllFiles').checked;
+			return thePrefs;
+		}
+ //]]>
+	</script>
+</dialog>

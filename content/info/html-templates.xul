@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="HTML Templates"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>HTML Template</html:h2>
+							<html:p><html:em>This is experimental!<html:br/>
+								It works, but the syntax is still subject to consideration.</html:em></html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>Use as HTML Template</html:th>
+						<html:td>
+							<html:p>
+								Process templating elements and save the resulting page as a new HTML file.
+							</html:p>
+							<html:p>
+								For the most part, a template file is an ordinary complete HTML page.<html:br/>
+								However, at certain places you add “template” custom tags to be replaced<html:br/>
+								either with file content or with immediate content.
+							</html:p>
+							<html:p>
+								To use as an HTML Template
+							</html:p>
+							<html:ul>
+								<html:li>Create an HTML Page as usual.
+								</html:li>
+								<html:li>Where you want content to be inserted, type one of the following:
+									<html:pre>
+	&lt;template title="[Title]" ask="[Question]"/&gt;
+	&lt;template title="[Title]" file="[file]"/&gt;
+	&lt;template title="Title" file=""/&gt;
+
+									</html:pre>
+								</html:li>
+								<html:li>The &lt;template&gt; element is one of the following:
+									<html:table>
+										<html:tr>
+											<html:th><html:code>&lt;template title="[Title]" ask="[Question]"/&gt;</html:code></html:th>
+											<html:td>Asks for some text and replaces it here.<html:br/>
+												Useful, for example, for the &lt;title&gt; or a &lt;h2&gt; element.</html:td>
+										</html:tr>
+										<html:tr>
+											<html:th><html:code>&lt;template title="[Title]" file="[file]"/&gt;</html:code></html:th>
+											<html:td>Inserts a particular file here.</html:td>
+										</html:tr>
+										<html:tr>
+											<html:th><html:code>&lt;template title="[Title]" file=""/&gt;</html:code></html:th>
+											<html:td>Asks for a file and inserts it here.</html:td>
+										</html:tr>
+									</html:table>
+								</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

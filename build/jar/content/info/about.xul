@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="About"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel id="about">
+				<html:div>
+					<html:p><html:strong>Version</html:strong> 0.3.3b<html:br/>Copyright © Mark Simon</html:p>
+
+					<html:p>
+						This Addon for Komodo Edit/IDE simplifies some of the processing of hand-coding HTML.<html:br/>
+						The various tools either replace selected text with HTML code which would be more tedioius <html:br/>
+						to type or, in some cases, inserts snippets of HTML.
+					</html:p>
+					<html:p>
+						There are also some additional tools to help with setting up pages and some common preferences.<html:br/>
+					</html:p>
+					<html:p>
+						Most of the tools wait for you to OK them before going ahead. Most of the tools also include<html:br/>
+						a small sample to illustrate what the tools do, as well as the effect of the options you might<html:br/>
+						have chosen.
+					</html:p>
+					<html:p>
+						Where samples are given, you can also copy the source or result sample by clicking on the clipboard icon.<html:br/>
+						The final result can be copied to the clipboard, or can replace the selected original text.
+					</html:p>
+					<html:p>
+						Select the <span class="button">Other Buttons</span> above to see what the individual tools do.
+					</html:p>
+
+					<html:h2>
+						Acknowledgements
+					</html:h2>
+
+					<html:h2>
+						Beautifier
+					</html:h2>
+					<html:p>
+						The actual code in the beautify section is all somebody elses work:
+					</html:p>
+					<html:ul>
+						<html:li>The JavaScript Beautifier was written by Einar Lielmanis</html:li>
+						<html:li>The HTML Beautifier was written by Nochum Sossonko, based on Einar Lielmanis’s code</html:li>
+						<html:li>The CSS Beautifier was written by Harutyun Amirjanyan, based on Einar Lielmanis’s code</html:li>
+					</html:ul>
+					<html:p>
+						You can learn more about the Beautifier at <span class="link">http://jsbeautifier.org/</span>
+					</html:p>
+
+					<html:h2>
+						Language Preferences
+					</html:h2>
+					<html:p>
+						The code to set preferred languages is based on sample code provided by Eric P at ActiveState.
+					</html:p>
+					<html:p>
+						The forum discussion is at: <span class="link">http://community.activestate.com/node/10458</span>
+					</html:p>
+
+				</html:div>
+			</tabpanel>
+		</tabpanels>
+</overlay>

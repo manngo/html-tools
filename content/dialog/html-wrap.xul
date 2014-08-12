@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+<?xml-stylesheet type="text/css" href="data:text/css,
+
+.wrapped {
+font-weight: bold;
+
+}
+.block {
+display: block;
+}
+.inline:before {
+content: ' [';
+}
+.inline:after {
+content: '] ';
+}
+.test {
+color: green;
+}
+
+" ?>
+
+<dialog
+	id="dialog-table"
+	title="Wrap HTML5 Element"
+	orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+	<dialogheader title="Wrap Element" description="This wraps elements"/>
+	<groupbox flex="1">
+		<menulist id="element">
+			<menupopup ignorekeys="true" persist="value">
+				<!-- Generic -->
+				<menuitem label="div" value="div"/>
+				<menuitem label="span" value="span"/>
+				<menuseparator/>
+				<!-- “Formatting” -->
+				<menuitem label="em" value="em"/>
+				<menuitem label="i" value="i"/>
+				<menuitem label="strong" value="strong"/>
+				<menuitem label="b" value="b"/>
+				<menuseparator/>
+				<!-- Specialised -->
+				<menuitem label="a" value="a"/>
+				<menuseparator/>
+				<!-- HTML5 -->
+				<menuitem label="header" value="header"/>
+				<menuitem label="footer" value="footer" />
+				<menuitem label="nav" value="nav"/>
+				<menuitem label="article" value="article"/>
+				<menuitem label="section" value="section"/>
+				<menuseparator/>
+				<menuitem value="other" label="other …" id="other"/>
+			</menupopup>
+		</menulist>
+
+		<box id="otherbox" hidden="true">
+			<label control="othertag" width="32">tag</label>
+			<textbox id="othertag" value="" persist="value" />
+		</box>
+
+		<radiogroup id="type" persist="value">
+			<radio id="inline" value="inline" label="inline" selected="true" persist="selected"/>
+			<radio id="block" value="block" label="block" persist="selected"/>
+		</radiogroup>
+
+		<checkbox id="newline" label="New Line" value="1" persist="checked"/>
+	</groupbox>
+
+	<groupbox id="sample" />
+	<groupbox id="idclass" />
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+	<![CDATA[
+'use strict';
+		var element, otherbox, othertag, type, newline;
+		var className, id;
+
+		function setType() {
+			var otherbox=document.getElementById('otherbox');
+			var othertag=document.getElementById('othertag');
+			var element=document.getElementById('element');
+			var newline=document.getElementById('newline');
+			var type=document.getElementById('type');
+
+			otherbox.hidden = element.value!='other';
+
+			if(!otherbox.hidden) othertag.focus();
+
+			switch(element.value) {
+				case 'div':
+				case 'header':
+				case 'footer':
+				case 'nav':
+				case 'article':
+				case 'section':
+					type.value='block';
+					newline.checked=true;
+					break;
+				case 'span':
+				case 'em':
+				case 'i':
+				case 'strong':
+				case 'b':
+				case 'a':
+					type.value='inline';
+					newline.checked=false;
+					break;
+				default:
+			}
+
+			setSource();
+		}
+
+		function initMore() {
+			document.getElementById('block').onclick = document.getElementById('inline').onclick = setSource;
+
+			element = document.getElementById('element');
+			className = document.getElementById('class');
+			id = document.getElementById('id');
+			otherbox = document.getElementById('otherbox');
+			othertag = document.getElementById('othertag');
+			type = document.getElementById('type');
+			newline = document.getElementById('newline');
+			element.addEventListener("select", setType, false);
+
+			setType();
+		}
+
+		function getParms() {
+			var otherbox=document.getElementById('otherbox');
+			var othertag=document.getElementById('othertag');
+			var element=document.getElementById('element');
+			var newline=document.getElementById('newline');
+
+			var parms= {
+				copy:document.getElementById("copy").checked,
+				id:document.getElementById("id").value,
+				className:document.getElementById("class").value,
+				'element':(otherbox.hidden ? element.value : othertag.value),
+				'newline':newline.checked,
+			};
+
+			return parms;
+		}
+
+		function setSource() {
+			var type=document.getElementById('type');
+			switch(type.value) {
+				case 'block':
+					source.innerHTML='This is an example of\n<span class="wrapped">block</span>\ncontent';
+					break;
+				case 'inline':
+					source.innerHTML='This is an example of <span class="wrapped">inline</span> content';
+					break;
+				default:
+			}
+
+			setDestination();
+			window.sizeToContent();
+
+
+		}
+
+		function setDestination() {
+			var type=document.getElementById('type');
+
+			switch(type.value) {
+				case 'block':
+					putDestination('This is an example of\n%s\ncontent'.sprintf(wrapTag('block',getParms())));
+					break;
+				case 'inline':
+					putDestination('This is an example of %s content'.sprintf(wrapTag('inline',getParms())));
+					break;
+				default:
+			}
+			window.sizeToContent();
+		}
+	]]>
+	</script>
+</dialog>

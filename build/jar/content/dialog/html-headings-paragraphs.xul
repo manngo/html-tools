@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+	id="dialog-headings-paragraphs"
+	title="Convert to Headings &amp; Paragraphs"
+	orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<groupbox>
+		<checkbox id="div" label="Wrap in div" value="1" persist="checked"/>
+	</groupbox>
+
+
+	<groupbox id="sample" />
+	<groupbox id="idclass" />
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+/* exported setSource, setDestination, setAccept, init */
+		var div, idclass;
+		function initMore() {
+			window.sizeToContent();
+
+			idclass=document.getElementById('idclass');
+
+			div=document.getElementById('div');
+			div.onclick=function() {
+				setSource();
+				idclass.hidden=!this.checked;
+				setDestination();
+			};
+
+		}
+
+		function setSource() {
+			putSource('fruit\n\tapple\n\tbanana\n\tcherry\nanimals\n\taardvark\n\tbadger\n\tcat\ninstruments\n\taccordion\n\tbanjo\n\tcello');
+			setDestination();
+		}
+
+		function setDestination() {
+			putDestination(makeHeadingsParagraphs(getSource(),getParms()));
+			window.sizeToContent();
+		}
+
+		function setAccept() {
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Replace';
+		}
+
+		function getParms() {
+			return {
+				'id': document.getElementById('id').value,
+				'className': document.getElementById('class').value,
+				'div': document.getElementById('div').checked
+			};
+		}
+	</script>
+</dialog>

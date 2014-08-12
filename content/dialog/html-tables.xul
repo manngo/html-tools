@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+	id="dialog-table"
+	title="Convert to Table"
+	orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<groupbox flex="1">
+		<groupbox>
+			<caption label="Delimiter"/>
+
+			<radiogroup id="delimiter">
+				<radio id="tab" value="tab" label="Use Tabs" selected="true" persist="selected"/>
+				<radio id="comma" value="comma" label="Use Commas" persist="selected"/>
+			</radiogroup>
+			<checkbox id="combine" label="Combine Delimiters" value="0" persist="checked"/>
+		</groupbox>
+		<checkbox id="header" label="Header Row" value="1" persist="checked"/>
+
+		<groupbox>
+			<caption label="Sections"/>
+			<checkbox id="sections" label="Use Sections" value="1"  persist="checked"/>
+			<checkbox id="footer" label="Footer Section" value="1" persist="checked"/>
+		</groupbox>
+	</groupbox>
+
+	<groupbox id="sample" />
+	<groupbox id="idclass" />
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+
+/* exported setSource, setDestination, setAccept, init, initMore */
+
+		function setSource() {
+			var delimiter=document.getElementById('delimiter').value;
+			putSource(delimiter=='tab'
+							? 'a\tb\tc\td\te\nf\tg\th\ti\tj\nk\tl\tm\tn\to\np\tq\tr\ts\tt\nu\tv\tw\tx\ty'
+							: 'a,b,c,d,e\nf,g,h,i,j\nk,l,m,n,o\np,q,r,s,t\nu,v,w,x,y');
+			setDestination();
+		}
+
+		function setDestination() {
+			putDestination(makeTable(getSource(),getParms()));
+			window.sizeToContent();
+		}
+
+		function setAccept() {
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Replace';
+		}
+
+		function getParms() {
+			return {
+				copy:document.getElementById("copy").checked,
+				id:document.getElementById("id").value,
+				className:document.getElementById("class").value,
+
+				delimiter:document.getElementById("delimiter").value,
+				combine:document.getElementById("delimiter").checked,
+
+				sections:document.getElementById("sections").checked,
+				header:document.getElementById("header").checked,
+				footer:document.getElementById("footer").checked,
+			};
+		}
+
+		function initMore() {
+			document.getElementById('tab').onclick=
+			document.getElementById('comma').onclick=
+				setSource;
+			document.getElementById('header').onclick=
+			document.getElementById('sections').onclick=
+			document.getElementById('footer').onclick=
+			document.getElementById('combine').onclick=
+				setDestination;
+		}
+
+	</script>
+</dialog>

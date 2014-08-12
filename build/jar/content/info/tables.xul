@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Tables"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Tables</html:h2>
+							<html:p>These tools will convert plain text to a table.</html:p>
+							<html:p>To use, select some plain text and choose one of the menu items to convert.<html:br/>
+								Optionally you may include an id or a class name.</html:p>
+							<html:ul>
+								<html:li>For tables, put each row on a separate line.<html:br/>
+									You can separate table cells with either a TAB or a comma.</html:li>
+							</html:ul>
+							<html:p>The selected text will be replaced with the converted code.<html:br/>
+								Alternatively, you can copy the converted code to the clipboard.</html:p>
+							<html:p>The clipboard icon beside the samples allow you to make a copy of the sample itself.</html:p>
+						</html:td>
+					</html:tr>
+
+					<html:tr>
+						<html:th>Make Table</html:th>
+						<html:td>
+							<html:p>
+								Converts multiple lines to a Table
+							</html:p>
+							<html:p>
+								Each row is on a separate line.<html:br/>
+								On Each row, each items are separated either by tabs or commas.<html:br/>
+							</html:p>
+
+							<html:h3>Sections</html:h3>
+							<html:p>
+								Modern tables should include <html:strong>tbody</html:strong>,
+									and possibly <html:strong>thead</html:strong> and/or <html:strong>tfoot</html:strong> sections.<html:br/>
+								Note that this will keep the sections in logical (<html:strong>thead</html:strong>,
+									<html:strong>tbody</html:strong>,<html:strong>tfoot</html:strong>) order,<html:br/>
+									which is OK in HTML5, but technically not in XHTML<html:br/>
+							</html:p>
+
+							<html:h3>Other Options</html:h3>
+							<html:p>
+								The first row may be marked as header (<html:strong>th</html:strong>) elements.<html:br/>
+								You can use tab or comma delimiters.<html:br/>
+							</html:p>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

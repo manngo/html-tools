@@ -1,0 +1,56 @@
+
+
+this is a<b & b>c
+
+a	b
+
+
+
+To Test:
+	smart quotes
+	forms
+	fieldset
+	label
+	button
+
+This is a heading
+
+The cat sat on the mat and that is that.
+The frog sat on the log and watched the bog.
+
+"This is a 'test'" last quote "interersting"
+
+a<b
+
+apple
+banana
+cherry
+
+t1	h1
+t2	h2
+t3	h3
+t4	h4
+
+This is a test
+<button type="submit" name="q" id="w">OK</button>
+animals
+	aardvark
+	badger
+fruit
+	apple
+	banana
+instruments
+	accordion
+	banjo
+etc
+
+<label><input type="radio" name="" value="a"/>b</label>
+<label><input type="radio" name="" value="x"/>d</label>
+
+
+
+
+a	b	c	d
+e	f	g	h
+i	j	k	l
+m	n	o	p

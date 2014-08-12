@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Basic HTML"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Basic HTML Tools</html:h2>
+							<html:p>These tools will convert plain text to block type elements.</html:p>
+							<html:p>To use, select some plain text and choose one of the menu items to convert.<html:br/>
+								Optionally you may include an id or a class name.</html:p>
+							<html:p>The selected text will be replaced with the converted code.<html:br/>
+								Alternatively, you can copy the converted code to the clipboard.</html:p>
+							<html:p>The clipboard icon beside the samples allow you to make a copy of the sample itself.</html:p>
+						</html:td>
+					</html:tr>
+
+					<html:tr>
+						<html:th>Make Paragraphs</html:th>
+						<html:td>
+							Multiple lines to multiple paragraphs.<html:br/>
+							Wraps individual lines inside &lt;p&gt; …  &lt;/p&gt; tags.<html:br/>
+						</html:td>
+					</html:tr>
+
+					<html:tr>
+						<html:th>Make Heading</html:th>
+						<html:td>
+							Selection to heading element<html:br/>
+							Choose a heading level from the menu.<html:br/>
+							Wraps selection inside &lt;h?&gt; …  &lt;/h?&gt; tags.<html:br/>
+						</html:td>
+					</html:tr>
+
+					<html:tr>
+						<html:th>Make Headings &amp; Paragraphs</html:th>
+						<html:td>
+							Selection to headings and paragraphs<html:br/>
+							Non-indented lines become &lt;h2&gt; elements;<html:br/>
+							Indented lines become paragraphs<html:br/>
+						</html:td>
+					</html:tr>
+
+
+					<html:tr>
+						<html:th>Wrap Element</html:th>
+						<html:td>Wraps selection inside a new element, to be specified.<html:br/>Optional class and id.</html:td>
+					</html:tr>
+
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="CSS Processor"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>CSS Processor</html:h2>
+							<html:p>These tools will convert your document.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>PreProcess CSS</html:th>
+						<html:td>
+							<html:p>
+								Pre-process a CSSP file and saves the result as a CSS file.
+							</html:p>
+							<html:p>
+								CSSP is a lightweight CSS pre-processor to simplify the awkward parts of CSS.<html:br/>
+								Currently only the CSSP variables are implemented.<html:br/>
+								To use CSSP, create a CSS file and save with the .cssp extension. The processed file will be saved
+									in the same location with a proper .css extension.
+							</html:p>
+							<html:p>
+								Currently, only CSSP variables are supported. More features will be added.
+							</html:p>
+							<html:p>
+								To use CSSP variables
+							</html:p>
+							<html:ul>
+								<html:li>Create an @define block:
+									<html:pre>
+@define {
+	something:	rgb(12,34,56);
+	thing:		#123456;
+	stuff:		linear-gradient(to bottom, rgb(23,45,67), $thing);
+}
+									</html:pre>
+								</html:li>
+								<html:li>Use your define variable names, prefixing with the $ sign:
+									<html:pre>
+selector {
+	color:			$something;
+	background-color:	$thing;
+	background-image:	$stuff;
+}
+									</html:pre>
+								</html:li>
+								<html:li>The result will be:
+									<html:pre>
+selector {
+	color:			rgb(12,34,56);
+	background-color:	#123456;
+	background-image:	linear-gradient(to bottom, rgb(23,45,67), #123456);
+}
+									</html:pre>
+								</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

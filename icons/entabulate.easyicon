@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="no"?>
+<EasyIcon>
+    <BackgroundColor type="Color">Generic RGB,4,0.000000,0.000000,0.000000,1.000000</BackgroundColor>
+    <BorderShadow type="Boolean">NO</BorderShadow>
+    <BorderShadowAngle type="Double">270</BorderShadowAngle>
+    <BorderGradient type="Boolean">YES</BorderGradient>
+    <BorderGradientAngle type="Double">270</BorderGradientAngle>
+    <BorderStyle type="Row">2</BorderStyle>
+    <BorderColor type="Color">Generic Gray,2,0.900000,1.000000</BorderColor>
+    <BorderGradStartColor type="Color">Generic Gray,2,1.000000,1.000000</BorderGradStartColor>
+    <BorderGradEndColor type="Color">Generic Gray,2,0.820000,1.000000</BorderGradEndColor>
+    <BorderRadius type="Double">0.5</BorderRadius>
+    <BorderInset type="Double">0.025</BorderInset>
+    <BorderThickness type="Double">0.05</BorderThickness>
+    <BorderOffset type="Double">0.01</BorderOffset>
+    <IconDraw type="Boolean">YES</IconDraw>
+    <GlowDraw type="Boolean">YES</GlowDraw>
+    <GlossDraw type="Boolean">NO</GlossDraw>
+    <GlossIsShine type="Boolean">YES</GlossIsShine>
+    <GlossBkColor type="Color">Generic RGB,4,0.200000,0.200000,0.200000,1.000000</GlossBkColor>
+    <GlossRadius type="Double">2.6</GlossRadius>
+    <GlossBuldge type="Double">0.5</GlossBuldge>
+    <GlossAngle type="Double">0</GlossAngle>
+    <IconImageType_t8mk type="Boolean">NO</IconImageType_t8mk>
+    <IconImageType_it32 type="Boolean">NO</IconImageType_it32>
+    <IconImageType_h8mk type="Boolean">NO</IconImageType_h8mk>
+    <IconImageType_ih32 type="Boolean">NO</IconImageType_ih32>
+    <IconImageType_ich# type="Boolean">NO</IconImageType_ich#>
+    <IconImageType_l8mk type="Boolean">NO</IconImageType_l8mk>
+    <IconImageType_il32 type="Boolean">NO</IconImageType_il32>
+    <IconImageType_s8mk type="Boolean">NO</IconImageType_s8mk>
+    <IconImageType_is32 type="Boolean">NO</IconImageType_is32>
+    <IconImageType_ics# type="Boolean">NO</IconImageType_ics#>
+    <IconImageType_ICN# type="Boolean">NO</IconImageType_ICN#>
+    <IconImageType_ic14 type="Boolean">NO</IconImageType_ic14>
+    <IconImageType_ic13 type="Boolean">NO</IconImageType_ic13>
+    <IconImageType_ic12 type="Boolean">NO</IconImageType_ic12>
+    <IconImageType_ic11 type="Boolean">NO</IconImageType_ic11>
+    <IconImageType_ic10 type="Boolean">NO</IconImageType_ic10>
+    <IconImageType_ic09 type="Boolean">NO</IconImageType_ic09>
+    <IconImageType_ic08 type="Boolean">NO</IconImageType_ic08>
+    <IconImageType_ic07 type="Boolean">NO</IconImageType_ic07>
+    <IconImageType_ic06 type="Boolean">NO</IconImageType_ic06>
+    <IconImageType_ic05 type="Boolean">NO</IconImageType_ic05>
+    <IconImageType_ic04 type="Boolean">YES</IconImageType_ic04>
+    <Icn57px type="Boolean">NO</Icn57px>
+    <Icn114px type="Boolean">NO</Icn114px>
+    <Icn60px type="Boolean">NO</Icn60px>
+    <Icn120px type="Boolean">NO</Icn120px>
+    <Icn72px type="Boolean">NO</Icn72px>
+    <Icn144px type="Boolean">NO</Icn144px>
+    <Icn76px type="Boolean">NO</Icn76px>
+    <Icn152px type="Boolean">NO</Icn152px>
+    <Icn512px type="Boolean">NO</Icn512px>
+    <Icn1024px type="Boolean">NO</Icn1024px>
+    <IcnCustom type="Boolean">NO</IcnCustom>
+    <IcnCustomSize type="Integer">200</IcnCustomSize>
+    <GlyphSettings>
+        <Glyph>
+            <IconEnabled type="Boolean">YES</IconEnabled>
+            <IconLimitMinSize type="Boolean">NO</IconLimitMinSize>
+            <IconLimitMaxSize type="Boolean">NO</IconLimitMaxSize>
+            <IconMinIconSize type="Double">0</IconMinIconSize>
+            <IconMaxIconSize type="Double">6</IconMaxIconSize>
+            <IconAddBorderGradient type="Boolean">YES</IconAddBorderGradient>
+            <IconShadow type="Boolean">YES</IconShadow>
+            <IconPosX type="Double">0</IconPosX>
+            <IconPosY type="Double">0</IconPosY>
+            <IconPosAngle type="Double">0</IconPosAngle>
+            <IconSize type="Double">0.4</IconSize>
+            <IconStyle type="Index">1</IconStyle>
+            <IconText type="String">&#8677;</IconText>
+            <IconFill type="Boolean">YES</IconFill>
+            <IconStroke type="Boolean">NO</IconStroke>
+            <IconStrokeAbove type="Boolean">NO</IconStrokeAbove>
+            <IconFillColor type="Color">Generic Gray,2,0.900000,1.000000</IconFillColor>
+            <IconStrokeColor type="Color">Generic Gray,2,0.000000,1.000000</IconStrokeColor>
+            <IconStrokeWidth type="Double">1</IconStrokeWidth>
+            <IconFontFamily type="String">Lucida Grande</IconFontFamily>
+            <IconFontWeight type="Double">5</IconFontWeight>
+            <IconFontItalic type="Boolean">NO</IconFontItalic>
+            <IconFontBold type="Boolean">YES</IconFontBold>
+            <IconImagePath type="String"></IconImagePath>
+            <IconGlyphFill type="Boolean">YES</IconGlyphFill>
+            <IconGlyphStroke type="Boolean">NO</IconGlyphStroke>
+            <IconGlyphStrokeAbove type="Boolean">NO</IconGlyphStrokeAbove>
+            <IconGlyphFillColor type="Color">Generic Gray,2,0.900000,1.000000</IconGlyphFillColor>
+            <IconGlyphStrokeColor type="Color">Generic Gray,2,0.000000,1.000000</IconGlyphStrokeColor>
+            <IconGlyphStrokeWidth type="Double">1</IconGlyphStrokeWidth>
+            <Nodes></Nodes>
+        </Glyph>
+    </GlyphSettings>
+    <GlowSettings>
+        <Glow>
+            <GlowEnabled type="Boolean">YES</GlowEnabled>
+            <GlowLimitMinSize type="Boolean">NO</GlowLimitMinSize>
+            <GlowLimitMaxSize type="Boolean">NO</GlowLimitMaxSize>
+            <GlowMinIconSize type="Double">0</GlowMinIconSize>
+            <GlowMaxIconSize type="Double">0</GlowMaxIconSize>
+            <GlowPosX type="Double">0</GlowPosX>
+            <GlowPosY type="Double">0</GlowPosY>
+            <GlowAngle type="Double">0</GlowAngle>
+            <GlowStyle type="Column">1</GlowStyle>
+            <GlowColor1Enabled type="Boolean">YES</GlowColor1Enabled>
+            <GlowColor2Enabled type="Boolean">YES</GlowColor2Enabled>
+            <GlowColor3Enabled type="Boolean">NO</GlowColor3Enabled>
+            <GlowColor4Enabled type="Boolean">NO</GlowColor4Enabled>
+            <GlowColor1Color type="Color">Generic RGB,4,0.501961,0.501961,0.501961,1.000000</GlowColor1Color>
+            <GlowColor2Color type="Color">Generic RGB,4,0.000000,0.000000,0.000000,1.000000</GlowColor2Color>
+            <GlowColor3Color type="Color">Generic Gray,2,0.000000,1.000000</GlowColor3Color>
+            <GlowColor4Color type="Color">Generic Gray,2,0.000000,1.000000</GlowColor4Color>
+            <GlowColor1Pos type="Double">0</GlowColor1Pos>
+            <GlowColor2Pos type="Double">0.85</GlowColor2Pos>
+            <GlowColor3Pos type="Double">0</GlowColor3Pos>
+            <GlowColor4Pos type="Double">0</GlowColor4Pos>
+        </Glow>
+    </GlowSettings>
+    <Gloss>
+        <GlossEnabled type="Boolean">YES</GlossEnabled>
+        <GlossLimitMinSize type="Boolean">NO</GlossLimitMinSize>
+        <GlossLimitMaxSize type="Boolean">NO</GlossLimitMaxSize>
+        <GlossMinIconSize type="Double">0</GlossMinIconSize>
+        <GlossMaxIconSize type="Double">0</GlossMaxIconSize>
+        <GlossPosX type="Double">0</GlossPosX>
+        <GlossPosY type="Double">0</GlossPosY>
+        <GlossAngle type="Double">0</GlossAngle>
+        <GlossStyle type="Column">0</GlossStyle>
+        <GlossColor1Enabled type="Boolean">YES</GlossColor1Enabled>
+        <GlossColor2Enabled type="Boolean">YES</GlossColor2Enabled>
+        <GlossColor3Enabled type="Boolean">YES</GlossColor3Enabled>
+        <GlossColor4Enabled type="Boolean">NO</GlossColor4Enabled>
+        <GlossColor1Color type="Color">Generic Gray,2,1.000000,0.850000</GlossColor1Color>
+        <GlossColor2Color type="Color">Generic Gray,2,1.000000,0.500000</GlossColor2Color>
+        <GlossColor3Color type="Color">Generic Gray,2,1.000000,0.050000</GlossColor3Color>
+        <GlossColor4Color type="Color">Generic Gray,2,0.000000,1.000000</GlossColor4Color>
+        <GlossColor1Pos type="Double">0</GlossColor1Pos>
+        <GlossColor2Pos type="Double">0.5</GlossColor2Pos>
+        <GlossColor3Pos type="Double">1</GlossColor3Pos>
+        <GlossColor4Pos type="Double">0</GlossColor4Pos>
+    </Gloss>
+    <SizeableIcon>
+        <Showing>NO</Showing>
+        <X>0</X>
+        <Y>52</Y>
+        <W>400</W>
+        <H>466</H>
+    </SizeableIcon>
+</EasyIcon>
