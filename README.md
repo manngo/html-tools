@@ -37,9 +37,11 @@ Tools Include:
 * Quick Web Preferences
 
 The addon adds a menu to your main menu bar, from which the above tools are selected.
+
 The first Menu Item, About HTML Tools …, contains a detailed summary on the use of each tool.
 
 Note the version number: 0.3.3b. The addon works, but there may be some rough edges.
+
 In particular:
 
 * The Icons need work. (Contributions would be very welcome)
@@ -58,4 +60,5 @@ This addon does what it does, and doesn’t do what it doesn’t do.
 Everything else is a bonus.
 
 I use this addon regularly in my own work, and subjected all of my students to it, with success.
+
 I hope that you will also find it useful in website development.
