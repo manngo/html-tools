@@ -6,6 +6,10 @@ The various tools either replace selected text with HTML code which would be mor
 
 There are also some additional tools to help with setting up pages and some common preferences.
 
+You can download the latest version [here](http://komodoide.com/resources/addons/manngo--htmltools) …
+
+
+
 Tools Include:
 
 * Instant HTML
