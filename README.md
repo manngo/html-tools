@@ -57,6 +57,19 @@ In particular:
 
 Future plans include adding form tools, css tools, some snippets and more work on the CSS pre processor and HTML templates.
 
+Updates
+-------
+
+Changes
+
+*	Fixed layout with Make Anchors
+*	Fixed HTML Beautify bug
+
+Changes
+
+*	Added Remove tags
+
+
 Discalimer
 ----------
 
