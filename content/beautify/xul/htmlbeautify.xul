@@ -77,7 +77,7 @@
 					<label id="unformatted_label" control="unformatted">Leave Unformatted:</label>
 					<textbox id="unformatted" value="" width="24" rows="4" persist="value" multiline="true" />
 				</box>
-				<box id="unformatted_box">
+				<box id="assume_default_box">
 					<checkbox id="assume_default" label="Assume Default" value="1" persist="checked"/>
 					<button id="insert_default" label="Insert Default" width="120"/>
 				</box>

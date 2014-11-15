@@ -9,7 +9,7 @@
 /* exported doit,test,remember */
 /*global
 	alert,
-	smartQuotes, makeParagraphs, makeHeading, makeHeadingsParagraphs, makeList, makeTable, addImage, addAnchor, addLink, makeAnchors, wrapTag, entify, makeHTML5, CSSP, arrayLiteral,
+	smartQuotes, makeParagraphs, makeHeading, makeHeadingsParagraphs, makeList, makeTable, addImage, addAnchor, addLink, makeAnchors, wrapTag, unTag, entify, makeHTML5, CSSP, arrayLiteral,
 	makeForm, makeInput, makeFieldset, makeLabel, makeNestedList,  makeSubmit, makeSelect, makeButton, makeRadiobutton, convertRadioButtons, makeCheckbox, makeTextarea, makeHTMLStructure
 	makeVideo, addComment, hex2rgb, boxShadow, borderRadius,
 	setKOPrefs
@@ -168,6 +168,9 @@
 				case 'webtools-wrap':
 					window.openDialog('chrome://html-tools/content/dialog/html-wrap.xul','Wrap Element around Selection','chrome,centerscreen,modal',parms);
 					if(editor && parms.out)		editor.replaceSel(wrapTag(editor.selText,parms.out));
+					break;
+				case 'webtools-untag':
+					if(editor)		editor.replaceSel(unTag(editor.selText));
 					break;
 
 			//	Text

@@ -12,7 +12,7 @@
 	<groupbox id="sample"><caption label="Sample"/>
 		<box><button id="copy-source" class="copy" onclick="copyText(this);"/><label>Source</label></box>
 		<!--textbox id="help-source" class='sample pre' maxwidth="300" multiline="true" onoverflow="this.height = this.inputField.scrollHeight+12;"/-->
-		<description id='help-source' class='sample pre' maxwidth="300">source</description>
+		<description id='help-source' class='sample pre' maxwidth="300">Source</description>
 
 		<box><button id='copy-destination' class='copy' onclick='copyText(this);'/><label>Result</label></box>
 		<description id='help-destination' class='sample pre' maxwidth="300">Result</description>

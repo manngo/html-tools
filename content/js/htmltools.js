@@ -404,6 +404,17 @@ function makeAnchors(text,parms,eol) {
 		}
 	}
 
+/*	Remove HTML Tags
+	--------------------------------------------------------- */
+
+	function unTag(text) { //	text,parms) {
+		var parser = new DOMParser();
+		var html = parser.parseFromString('', "text/html");
+		var div=html.createElement('div');
+		div.innerHTML=text;
+		return div.textContent;
+	}
+
 /*	Comments
 	--------------------------------------------------------- */
 

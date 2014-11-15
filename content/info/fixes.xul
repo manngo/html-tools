@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Changes"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Changes</html:h2>
+							<html:p>These tools will convert your document.</html:p>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>0.3.3c</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+								<html:li>Added Remove Tags</html:li>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+								<html:li>Fixed Layout with Add Anchors</html:li>
+								<html:li>Fixed HTML Beautify Bug</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-<!--	http://support.activestate.com/node/add/xpi	-->
+<!--	https://community.activestate.com/node/add/xpi	-->
 
 <overlay id="htmltoolsOverlay"
 		xmlns:html="http://www.w3.org/1999/xhtml"
@@ -20,7 +20,7 @@
 	<script type="application/x-javascript" src="chrome://html-tools/content/js/main.js" />
 
 	<menubar id="menubar_main">
-		<menu id="webtools" label="HTML Tools 0.3.3b" insertafter="helpMenu">
+		<menu id="webtools" label="HTML Tools 0.3.3c" insertafter="helpMenu">
 			<menupopup>
 				<menuitem id="info" label="About HTML Tools …" oncommand="window.openDialog('chrome://html-tools/content/info/info.xul','Info','chrome,centerscreen,modal');"
 					class="menuitem-iconic" image="chrome://html-tools/content/images/info.png"/>
@@ -41,6 +41,7 @@
 
 				<menuseparator />
 				<menuitem id="webtools-wrap" label="Wrap Element around Selection" oncommand="doit(event);"  class="menuitem-iconic" image="chrome://famfamfamsilk/skin/icons/page_white_code.png"/>
+				<menuitem id="webtools-untag" label="Remove Tags" oncommand="doit(event);"  class="menuitem-iconic" image="chrome://famfamfamsilk/skin/icons/page_white_code.png"/>
 
 				<menuseparator />
 				<menuitem id="webtools-entify" label="Convert to HTML Entities" oncommand="doit(event);"  class="menuitem-iconic" image="chrome://html-tools/content/images/entities.png"/>

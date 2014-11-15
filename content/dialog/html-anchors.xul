@@ -24,9 +24,9 @@
 	>
 
 	<groupbox flex="1">
-		<radiogroup id="reverse">
+		<radiogroup id="reverse" persist="value">
+			<radio id="href" value="1" label="href text" persist="selected"/>
 			<radio id="text" value="0" label="text href" persist="selected"/>
-			<radio id="href" value="1" label="href text" selected="true" persist="selected"/>
 		</radiogroup>
 	</groupbox>
 	<groupbox>
@@ -61,15 +61,19 @@
 		};
 
 		function setSource() {
-			if(comma.checked) source.value = reverse.value == 0
+			if(comma.checked) source.textContent = reverse.value == 0
 								?	'First,http://one.example.net\nSecond,http://two.example.net\nThird,http://three.example.net'
 								:	'http://one.example.net,First\nhttp://two.example.net,Second\nhttp://three.example.net,Third';
-			else source.value = reverse.value == 0
+			else source.textContent = reverse.value == 0
 								?	'First\thttp://one.example.net\nSecond\thttp://two.example.net\nThird\thttp://three.example.net'
 								:	'http://one.example.net\tFirst\nhttp://two.example.net\tSecond\nhttp://three.example.net\tThird';
 		}
 		function setDestination() {
-			destination.textContent=makeAnchors(source.value,getParms());
+//alert(source.textContent);
+			destination.textContent=makeAnchors(source.textContent,getParms());
+			window.sizeToContent();
+
+//alert(makeAnchors(source.textContent,getParms()));
 		}
 
 		document.getElementById('comma').onclick=
@@ -79,6 +83,11 @@
 				setSource();
 				setDestination();
 		};
+
+		function initMore() {
+			setSource();
+			setDestination();
+		}
 
 		function getParms() {
 			return {

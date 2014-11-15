@@ -46,7 +46,10 @@
 			primaryLanguages:				{	type: 'array',		value: ['Text','HTML','HTML5','CSS','JavaScript','PHP','SQL','MySQL'] },
 			secondaryLanguages:				{	type: 'array',		value: ['Apache','Bash','JSON','Komodo Snippet','Less','XML','XSLT'] },
 
-			showAllFiles:					{	type: 'boolean',	value: 1 },
+			browser:						{	type: 'string',		value: '' },
+			browser_preview_method:			{	type: 'string',		value: 'in-tab-other-group' },
+
+//			showAllFiles:					{	type: 'boolean',	value: 1 },
 		};
 	}
 
@@ -85,8 +88,8 @@
 			encodingEnvironment:			{	type: 'boolean',	value: prefset.getBooleanPref('encodingEnvironment')},
 			encodingDefault:				{	type: 'string',		value: prefset.getStringPref('encodingDefault')},
 
-//			browser:						{	type: 'string',		value: prefset.getStringPref('browser')},
-//			browser_preview_method:			{	type: 'string',		value: prefset.getStringPref('browser_preview_method')},
+			browser:						{	type: 'string',		value: prefset.getStringPref('browser')},
+			browser_preview_method:			{	type: 'string',		value: prefset.getStringPref('browser_preview_method')},
 		};
 		return result;
 	}

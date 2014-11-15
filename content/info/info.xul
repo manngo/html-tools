@@ -14,6 +14,7 @@
 <?xul-overlay href="chrome://html-tools/content/info/html-templates.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/beautify.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/setup.xul"?>
+<?xul-overlay href="chrome://html-tools/content/info/fixes.xul"?>
 
 <?xml-stylesheet type="text/css" href="data:text/css,
 

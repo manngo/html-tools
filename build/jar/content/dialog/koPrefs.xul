@@ -60,11 +60,11 @@
 				<description id="listSecondaryLanguages"></description>
 			</box>
 		</groupbox>
-		<groupbox>
+<!--		<groupbox>
 			<caption label="Places" />
 			<checkbox id="showAllFiles" label="Show All Files" value="1"/>
 		</groupbox>
-
+-->
 <!--		<groupbox>
 			<caption label="Browser Preview" />
 			<menulist id="browser_preview_method">
