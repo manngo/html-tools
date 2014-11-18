@@ -199,7 +199,7 @@
 			var thePrefs=getPrefs();
 			thePrefs['setPrimary']=document.getElementById('setPrimary').checked;
 			thePrefs['setSecondary']=document.getElementById('setSecondary').checked;
-			thePrefs['showAllFiles']=document.getElementById('showAllFiles').checked;
+//			thePrefs['showAllFiles']=document.getElementById('showAllFiles').checked;
 			return thePrefs;
 		}
  //]]>
