@@ -1,12 +1,12 @@
-<?xml version="1.0" ?>
-<?xml-stylesheet href="chrome://global/skin/" ?>
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
 <?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
-<?xul-overlay href="chrome://html-tools/content/dialog/include.xul" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
 
 <dialog
-	id="dialog-paragraphs"
-	title="Add Local Anchor"
-	orient="vertical"
+    id="dialog-heading"
+    title="Convert Document Tabs"
+    orient="vertical"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	defaultButton="accept"
@@ -14,165 +14,63 @@
 	buttonlabelaccept="OK"
 	ondialogaccept="return doOK();"
 	ondialogcancel="return doCancel();"
-	onload="init();"
-
+	qonload="init();"
 	>
-	<groupbox id="choose-type">
-		<caption label="Link Type" />
-		<radiogroup id="type" persist="value">
-			<radio id="type-css" value="css" label="CSS Style Sheet" persist="selected" />
-			<radio id="type-js" value="js" label="JavaScript" persist="selected" />
-		</radiogroup>
-	</groupbox>
 
-	<groupbox id="parms-css">
-		<caption label="CSS" />
-		<box>
-			<label control="css-href" width="32">href</label>
-			<vbox>
-				<textbox id="css-href" value="styles/styles.css" width="180" />
-				<button label="Choose File …" oncommand="getCSShref()" />
-			</vbox>
-		</box>
-		<groupbox flex="1">
-			<caption label="rel" />
-			<radiogroup id="rel" persist="value">
-				<radio id="rel-stylesheet" value="stylesheet" label="stylesheet" persist="selected" />
-				<radio id="rel-alternate" value="alternate stylesheet" label="alternate stylesheet" persist="selected" />
-			</radiogroup>
-			<box>
-				<label control="title" width="32">title</label>
-				<textbox id="title" value="" width="180" />
+	<groupbox id="details">
+		<groupbox>
+			<box id='idbox'>
+				<label control='oldwidth' width='56'>Old Width</label>
+				<textbox id='oldwidth' value='4' width="24" persist="value"/>
+			</box>
+			<box id='classbox'>
+				<label control='tabwidth' width='56'>Tab Width</label>
+				<textbox id='tabwidth' value='4'  width="24" persist="value"/>
 			</box>
 		</groupbox>
-		<groupbox>
-			<caption label="Media Type or Query" />
-			<menulist id="choose-media">
-				<menupopup>
-					<menuitem label="all" value="all" selected="true" />
-					<menuitem label="print" value="print" />
-					<menuitem label="screen" value="screen" />
-					<menuitem label="other …" value="" />
-				</menupopup>
-			</menulist>
-			<textbox id="media" value="" width="180" />
-		</groupbox>
-		<checkbox id="xhtml" />
+
+	<checkbox id="utf8" label="Convert to UTF-8" value="1" persist="checked"/>
+	<checkbox id="tabs" label="Use Tabs" value="1" persist="checked"/>
+
 	</groupbox>
 
-	<groupbox id="parms-js">
-		<caption label="JavaScript" />
-		<box>
-			<label control="js-href" width="32">src</label>
-			<vbox>
-				<textbox id="js-href" value="" width="180" />
-				<button label="Choose File …" oncommand="getJShref()" />
-			</vbox>
-		</box>
-		<box>
-			<vbox>
-				<checkbox id="crossorigin" label="Cross Origin" value="1" persist="checked"/>
-			</vbox>
+	<script type="application/x-javascript">
+/* exported setSource, setDestination, setAccept, init, initMore */
 
-		</box>
-	</groupbox>
-
-
-	<groupbox id="sample" />
-	<groupbox id="idclass" />
-	<hbox id="okcancelbuttons" />
-	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
-	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
-	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
-	<script>//<![CDATA[
-		/* exported setSource, setDestination, setAccept, init */
-		function getParms() {
-			var type=document.getElementById('type').value;
-
-			var parms = {
-				type: type,
-				href: type=='css' ? document.getElementById('css-href').value: document.getElementById('js-href').value,
-				rel: document.getElementById("rel").value,
-				media: document.getElementById("media").value,
-				title: document.getElementById("title").value,
-				xhtml: document.getElementById("xhtml").checked,
-				crossorigin: document.getElementById("crossorigin").checked,
-				id:document.getElementById("id").value,
-				className:document.getElementById("class").value
-			};
-
-			return parms;
-		}
-
-		function setSource() {
-			putSource('Select [Choose File …]');
-		}
-
-		function setDestination() {
-			putDestination(addLink(getParms()));
-			window.sizeToContent();
-		}
-
-		function showParms() {
-			var value=document.getElementById('type').value;
-			var list=['js','css'];
-			for(var i=0;i<list.length;i++) document.getElementById('parms-'+list[i]).hidden=list[i]!=value;
-			window.sizeToContent();
-		}
-
-		function getCSShref() {
-			var file=getFile('Style Sheets','*.css;*.cssp');
-			document.getElementById('css-href').value=file;
-			setDestination();
-		}
-
-		function getJShref() {
-			var file=getFile('JavaScript','*.js');
-			document.getElementById('js-href').value=file;
-			setDestination();
-		}
-
-		function getFile(title,filter) {
-			var file='';
-			var nsIFilePicker = Components.interfaces.nsIFilePicker;
-			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-
-			if(filter) fp.appendFilter(title,filter);
-
-			fp.init(window, "Select a File", nsIFilePicker.modeOpen);
-			var result=fp.show();
-			if (result != nsIFilePicker.returnCancel) {
-				file = fp.file.path;
-				file = relative(file,window.arguments[0].inn.cwd);
+		function entabulate(parms) {
+			var ko=window.opener.ko;
+			var cv = ko.views.manager.currentView;
+			var koDoc=cv.koDoc;
+			if (koDoc.encoding.short_encoding_name != "UTF-8") {
+				koDoc.setEncodingFromEncodingName("UTF-8");
 			}
-			return file;
+			koDoc.indentWidth = parms.tabwidth;
+			koDoc.tabWidth = parms.tabwidth;
+			koDoc.useTabs = parms.tabs;
+
+			var editor = cv.scimoz;
+			var regex=new RegExp(' {'+parms.oldwidth+'}','g');
+
+			editor.text=editor.text.replace(/^\t*( +)/gm,function(a,b,c) {
+				return a.replace(regex,'\t');
+			});
 		}
 
-		function setMedia() {
-			document.getElementById('media').value=document.getElementById('choose-media').value;
+		function doOK() {
+			entabulate(getParms());
+			return true;
+		}
+		function doCancel() {
+			return true;
 		}
 
-		function init() {
-			document.getElementById('type-css').onclick=
-			document.getElementById('type-js').onclick=
-				function() {
-					showParms();
-					setDestination();
-				};
-
-			document.getElementById('rel-stylesheet').onclick=
-			document.getElementById('rel-alternate').onclick=setDestination;
-
-			document.getElementById('choose-media').onselect=function() {
-				setMedia();
-				setDestination();
+		function getParms() {
+			return {
+				oldwidth:document.getElementById('oldwidth').value,
+				tabwidth:document.getElementById('tabwidth').value,
+				utf8:document.getElementById('utf8').checked,
+				tabs:document.getElementById('tabs').checked,
 			};
-			dialogInit();
-			setSetDestination(['title','media','css-href','js-href']);
-			showParms();
-			setMedia();
-
-//			getFile();
 		}
-	//]]></script>
+	</script>
 </dialog>
