@@ -4,7 +4,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>html-tools@101courseware.com</em:id>
         <em:name>HTML Tools</em:name>
-        <em:version>0.3.3d</em:version>
+        <em:version>0.3.3e</em:version>
         <em:description>Tools to Simplify HTML Development</em:description>
         <em:creator>Mark Simon</em:creator>
         <em:homepageURL>http://101courseware.com/komodo/webtools</em:homepageURL>
@@ -15,7 +15,7 @@
                 <!-- Komodo Edit's uuid -->
                 <em:id>{b1042fb5-9e9c-11db-b107-000d935d3368}</em:id>
                 <em:minVersion>6.0</em:minVersion>
-                <em:maxVersion>8.*</em:maxVersion>
+                <em:maxVersion>9.*</em:maxVersion>
             </Description>
         </em:targetApplication>
 
@@ -24,7 +24,7 @@
                 <!-- Komodo IDE's uuid -->
                 <em:id>{36E66FA0-F259-11D9-850E-000D935D3368}</em:id>
                 <em:minVersion>6.0</em:minVersion>
-                <em:maxVersion>8.*</em:maxVersion>
+                <em:maxVersion>9.*</em:maxVersion>
             </Description>
         </em:targetApplication>
 

@@ -29,6 +29,20 @@
 							</html:ul>
 						</html:td>
 					</html:tr>
+					<html:tr>
+						<html:th>0.3.3d</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+								<html:li>Added Remove Tags</html:li>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+								<html:li>Fixed Layout with Add Anchors</html:li>
+								<html:li>Fixed HTML Beautify Bug</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
 				</html:table>
 			</tabpanel>
 		</tabpanels>

@@ -69,6 +69,9 @@
 				<button label="Choose File …" oncommand="getJShref()" />
 			</vbox>
 		</box>
+		<box>
+			<checkbox id="crossorigin" label="Cross Origin" checked="false" value="1" persist="checked"/>
+		</box>
 	</groupbox>
 
 
@@ -90,6 +93,7 @@
 				media: document.getElementById("media").value,
 				title: document.getElementById("title").value,
 				xhtml: document.getElementById("xhtml").checked,
+				crossorigin: document.getElementById("crossorigin").checked,
 				id:document.getElementById("id").value,
 				className:document.getElementById("class").value
 			};
@@ -153,6 +157,7 @@
 					setDestination();
 				};
 
+			document.getElementById('crossorigin').onclick=
 			document.getElementById('rel-stylesheet').onclick=
 			document.getElementById('rel-alternate').onclick=setDestination;
 

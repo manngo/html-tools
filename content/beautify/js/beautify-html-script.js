@@ -21,28 +21,19 @@
 	================================================ */
 
 		function doOK() {
-	var	env={};
-//alert(JSON.stringify(env));
-//alert(window);
-//alert(window.opener);
-//alert(window.opener.ko);
-//		env.ko=window.opener.ko;
+			var	env={};
 			env.ko =		window.opener.ko;
 			env.cv =		env.ko.views.manager.currentView;
 			env.editor =	env.cv.scimoz;
 			env.cwd =		env.ko.projects.manager.currentProject.liveDirectory;
 			env.eol=['\r\n','\r','\n'][env.editor.eOLMode];
-alert(1);
+
 			var parms=getParms();
-alert(2);
 			var result=html_beautify(env.editor.selText,parms);
-alert(3);
 
 			result=result.replace(/\r?\n/g,env.eol);
-alert(4);
-alert(result);
 			env.editor.replaceSel(result);
-alert(6);
+
 			return true;
 		}
 

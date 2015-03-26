@@ -22,23 +22,27 @@
 	ondialogaccept="return doOK();"
 	ondialogcancel="return doCancel();"
 	onload="init();"
-	>
+>
 
 		<groupbox>
 			<groupbox>
 				<label>Indent Character</label>
 				<radiogroup id="indent_char">
 					<radio id="tab" value="9" label="Use Tabs" selected="true" persist="selected"/>
-					<radio id="spaces" value="32" label="Use Space" persist="selected"/>
+					<radio id="spaces" value="32" label="Use Spaces" persist="selected"/>
 				</radiogroup>
 			</groupbox>
 			<box id='indent_size_box'>
 				<textbox id="indent_size" value="4" width="24" persist="value"/>
 				<label id="indent_label" control="indent_size">Indent Size</label>
 			</box>
+			<label id="message">Nothing Here</label>
 		</groupbox>
-
+	<script>say(20);</script>
 	<script type="application/x-javascript" src="chrome://html-tools/content/beautify/js/beautify-css.js" />
+	<script>say(30);</script>
 	<script type="application/x-javascript" src="chrome://html-tools/content/beautify/js/utility.js" />
+	<script>say(40);</script>
 	<script type="application/x-javascript" src="chrome://html-tools/content/beautify/js/beautify-css-script.js" />
+	<script>say(50);</script>
 </dialog>

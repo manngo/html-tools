@@ -364,8 +364,8 @@ function makeAnchors(text,parms,eol) {
 				title = parms.title ? ' title="%s"'.sprintf(parms.title) : '';
 				return link.sprintf(id,className,parms.rel||'stylesheet',title,parms.href||'',parms.media||'all',parms.xhtml?'/':'');
 			case 'js':
-				link='<script %s%s type="text/javascript" src="%s"></script>';
-				return link.sprintf(id,className,parms.href);
+				link='<script %s%s type="text/javascript" src="%s"%s></script>';
+				return link.sprintf(id,className,parms.href,parms.crossorigin?' crossorigin':'');
 			default:
 				return '';
 		}

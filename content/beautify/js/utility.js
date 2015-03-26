@@ -7,3 +7,6 @@
 		document.getElementById('indent_size').value=spaces ? 4 : 1;
 	}
 
+	function say(message) {
+		document.getElementById('message').textContent=message;
+	}
