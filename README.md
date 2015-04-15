@@ -44,7 +44,7 @@ The addon adds a menu to your main menu bar, from which the above tools are sele
 
 The first Menu Item, About HTML Tools …, contains a detailed summary on the use of each tool.
 
-Note the version number: 0.3.3d. The addon works, but there may be some rough edges.
+Note the version number: 0.3.3f. The addon works, but there may be some rough edges.
 
 In particular:
 
@@ -68,6 +68,10 @@ Changes
 Changes
 
 *	Added Remove tags
+
+Changes
+
+*	Fixed but with simple preferences not working.
 
 
 Discalimer

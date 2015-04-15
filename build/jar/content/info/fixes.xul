@@ -43,6 +43,29 @@
 							</html:ul>
 						</html:td>
 					</html:tr>
+					<html:tr>
+						<html:th>0.3.3e</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+							</html:ul>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>0.3.3d</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+								<html:li>Fixed but with simple prefs not working.</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
 				</html:table>
 			</tabpanel>
 		</tabpanels>

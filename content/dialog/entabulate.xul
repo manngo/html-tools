@@ -19,11 +19,11 @@
 
 	<groupbox id="details">
 		<groupbox>
-			<box id='idbox'>
+			<box id='widthbox'>
 				<label control='oldwidth' width='56'>Old Width</label>
 				<textbox id='oldwidth' value='4' width="24" persist="value"/>
 			</box>
-			<box id='classbox'>
+			<box id='tabbox'>
 				<label control='tabwidth' width='56'>Tab Width</label>
 				<textbox id='tabwidth' value='4'  width="24" persist="value"/>
 			</box>

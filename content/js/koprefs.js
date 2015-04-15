@@ -40,7 +40,7 @@
 				ensureFinalEOL:				{	type: 'boolean',	value: 1 },
 				autoSaveSeconds:			{	type: 'long',		value: 0 },
 
-			encodingEnvironment:			{	type: 'boolean',	value: 0 },
+//			encodingEnvironment:			{	type: 'boolean',	value: 0 },
 			encodingDefault:				{	type: 'string',		value: 'utf-8'},
 
 			primaryLanguages:				{	type: 'array',		value: ['Text','HTML','HTML5','CSS','JavaScript','PHP','SQL','MySQL'] },
@@ -85,7 +85,7 @@
 				ensureFinalEOL:				{	type: 'boolean',	value: prefset.getBooleanPref('ensureFinalEOL')},
 				autoSaveSeconds:			{	type: 'long',		value: prefset.getLongPref('autoSaveSeconds')},
 
-			encodingEnvironment:			{	type: 'boolean',	value: prefset.getBooleanPref('encodingEnvironment')},
+//			encodingEnvironment:			{	type: 'boolean',	value: prefset.getBooleanPref('encodingEnvironment')},
 			encodingDefault:				{	type: 'string',		value: prefset.getStringPref('encodingDefault')},
 
 			browser:						{	type: 'string',		value: prefset.getStringPref('browser')},
@@ -160,7 +160,7 @@
 
 	/*	Internationization
 		================================================================================================================ */
-			prefset.setBooleanPref('encodingEnvironment',thePrefs['encodingEnvironment']);	//	Use Encoding Defined in Environment: ?
+//			prefset.setBooleanPref('encodingEnvironment',thePrefs['encodingEnvironment']);	//	Use Encoding Defined in Environment: ?
 			prefset.setStringPref('encodingDefault',thePrefs['encodingDefault']);	//	Encoding
 			//Language-Specific Default Encoding: See Below
 			//Signature (BOM): See Below
