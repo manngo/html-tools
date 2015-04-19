@@ -28,7 +28,9 @@
 				<label control='mruFileSize' width='96'>Recent Files</label>
 				<textbox id='mruFileSize' width="32"/>
 			</box>
+
 			<checkbox id="show_start_page" label="Show Start Page" value="1"/>
+
 		</groupbox>
 
 		<groupbox>
@@ -44,13 +46,15 @@
 				<textbox id='encodingDefault' width="48"/>
 			</box>
 		</groupbox>
+
 		<groupbox>
 			<caption label="Languages" />
+<!--
 			<groupbox>
 				<caption label="Current Languages" />
 				<description id="primaryLanguages" width="300"></description>
 			</groupbox>
-
+-->
 			<checkbox id="setPrimary" label="Use Main Web Languages:" checked="true" value="1"/>
 			<box>
 				<description id="listPrimaryLanguages"></description>
@@ -60,7 +64,8 @@
 				<description id="listSecondaryLanguages"></description>
 			</box>
 		</groupbox>
-<!--		<groupbox>
+<!--
+		<groupbox>
 			<caption label="Places" />
 			<checkbox id="showAllFiles" label="Show All Files" value="1"/>
 		</groupbox>
@@ -189,10 +194,10 @@
 		function initMore() {
 			currentPrefs=getKOPrefs();
 			setPrefs(currentPrefs);
-			document.getElementById('primaryLanguages').textContent=getPrimaryLanguages().join('; ');
+//			document.getElementById('primaryLanguages').textContent=getPrimaryLanguages().join('; ');
 			var languages=listPrimaryLanguages();
-			document.getElementById('listPrimaryLanguages').value=languages[0];
-			document.getElementById('listSecondaryLanguages').value=languages[1];
+			document.getElementById('listPrimaryLanguages').value=languages[0].join(';');
+			document.getElementById('listSecondaryLanguages').value=languages[1].join(';');
 		}
 
 		function getParms() {

@@ -55,7 +55,7 @@
 						</html:td>
 					</html:tr>
 					<html:tr>
-						<html:th>0.3.3d</html:th>
+						<html:th>0.3.3f</html:th>
 						<html:td>
 							<html:p>Changes:</html:p>
 							<html:ul>
@@ -63,6 +63,18 @@
 							<html:p>Fixes:</html:p>
 							<html:ul>
 								<html:li>Fixed but with simple prefs not working.</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>0.3.3g</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+								<html:li>Simple Prefs working, but still investigating issues with setting languages.</html:li>
 							</html:ul>
 						</html:td>
 					</html:tr>

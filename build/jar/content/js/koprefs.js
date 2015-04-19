@@ -27,7 +27,6 @@
 			editShowMinimap:				{	type: 'boolean',	value: 0 },
 			editEnableMouseZoom:			{	type: 'boolean',	value: 1 },
 
-
 				useTabs:					{	type: 'boolean',	value: 1 },
 				editElectricBrace:			{	type: 'boolean',	value: 1 },
 				showIndentationGuides:		{	type: 'boolean',	value: 1 },
@@ -43,8 +42,8 @@
 //			encodingEnvironment:			{	type: 'boolean',	value: 0 },
 			encodingDefault:				{	type: 'string',		value: 'utf-8'},
 
-			primaryLanguages:				{	type: 'array',		value: ['Text','HTML','HTML5','CSS','JavaScript','PHP','SQL','MySQL'] },
-			secondaryLanguages:				{	type: 'array',		value: ['Apache','Bash','JSON','Komodo Snippet','Less','XML','XSLT'] },
+			primaryLanguages:				{	type: 'array',		value: ['HTML','HTML5','CSS','JavaScript','PHP','SQL','MySQL'] },
+			secondaryLanguages:				{	type: 'array',		value: ['Apache','Bash','JSON','Less','XML','XSLT'] },
 
 			browser:						{	type: 'string',		value: '' },
 			browser_preview_method:			{	type: 'string',		value: 'in-tab-other-group' },
@@ -52,7 +51,6 @@
 //			showAllFiles:					{	type: 'boolean',	value: 1 },
 		};
 	}
-
 
 	function getKOPrefs() {
 		var prefs = Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs;
@@ -62,7 +60,7 @@
 		var result = {
 			mruProjectSize:					{	type: 'long',		value: prefset.getLongPref('mruProjectSize') },
 			mruFileSize:					{	type: 'long',		value: prefset.getLongPref('mruFileSize')},
-			show_start_page:				{	type: 'boolean',	value: prefset.getBooleanPref('show_start_page')},
+//			show_start_page:				{	type: 'boolean',	value: prefset.getBooleanPref('show_start_page')},
 
 			codeintelAutoInsertEndTag:		{	type: 'boolean',	value: prefset.getBooleanPref('codeintelAutoInsertEndTag')},
 
@@ -100,7 +98,6 @@
 		var i;
 		var prefs = Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs;
 		var prefset = prefs.QueryInterface(Components.interfaces.koIPreferenceSet);
-		var langprefs = prefset.getPref('languages');
 
 	/*	Key Bindings
 		================================================================================================================ */
@@ -131,6 +128,7 @@
 			prefset.setBooleanPref('editEnableMouseZoom',thePrefs['editEnableMouseZoom']);	//	Hide MiniMap
 			prefset.setBooleanPref('codeintelAutoInsertEndTag',thePrefs['codeintelAutoInsertEndTag']);	//	Hide MiniMap
 
+
 	/*		Indentation
 			============================================================================================================ */
 
@@ -156,7 +154,6 @@
 
 		//	Common Syntax
 			//	Choose a colour for your comments, and turn off italics.
-
 
 	/*	Internationization
 		================================================================================================================ */
@@ -184,8 +181,7 @@
 	/*	Languages
 		================================================================================================================ */
 
-		if(thePrefs['setPrimary']) setLanguagePrefs(thePrefs['setSecondary']);
-
+		setLanguagePrefs(thePrefs['setSecondary']);
 	}
 
 	function getPrimaryLanguages() {
@@ -207,7 +203,7 @@
 
 
 	function listPrimaryLanguages() {
-		var primaries = ['Text','HTML','HTML5','CSS','JavaScript','PHP','SQL','MySQL'];
+		var primaries = ['HTML','HTML5','CSS','JavaScript','PHP','SQL','MySQL'];
 		var secondaries = ['Apache','Bash','JSON','Komodo Snippet','Less','XML','XSLT'];
 		return [primaries,secondaries];
 	}
@@ -216,20 +212,24 @@
 /*	Language Settings: Set Primary Languages
 	================================================ */
 	function setLanguagePrefs(useSecondary) {
-		var [primaries,secondaries]=listPrimaryLanguages();
-		if(useSecondary) primaries=primaries.concat(secondaries);
-
-//		const {classes: Cc, interfaces: Ci} = Components;
-//		var langRegistry=Cc["@activestate.com/koLanguageRegistryService;1"].getService(Ci.koILanguageRegistryService);
-
-		var Cc=Components.classes,Ci=Components.interfaces;
-		var langRegistry=Cc['@activestate.com/koLanguageRegistryService;1'].getService(Ci.koILanguageRegistryService);
-
 		//	Get Languages
-			var languageNames = {};
-			langRegistry.getLanguageNames(languageNames , {}); // second {} needed to keep xpcom happy
-			languageNames = languageNames.value;
 
+			var languages=listPrimaryLanguages();
+			var [languages,secondaries]=listPrimaryLanguages();
+				if(useSecondary) languages=languages.concat(secondaries);
+				languages=['Text'].concat(languages);
+
+		//	Get Preferences
+
+			var prefs = Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs;
+			var prefset = prefs.QueryInterface(Components.interfaces.koIPreferenceSet);
+
+			var Cc=Components.classes,Ci=Components.interfaces;
+			var langRegistry = Cc["@activestate.com/koLanguageRegistryService;1"].getService(Ci.koILanguageRegistryService);
+			var languageNames = {};
+				langRegistry.getLanguageNames(languageNames , {}); // second {} needed to keep xpcom happy
+				languageNames = languageNames.value;
+/*
 		//	Get Language Prefs
 
 			var langPrefs;
@@ -241,23 +241,24 @@
 				var ids = {};
 				langPrefs.getPrefIds(ids, {});
 			}
-
+*/
 		//	Set Primary Languages
-
 			var madeChange = false;
+
 			languageNames.forEach(function(name) {
 				var koLanguage = langRegistry.getLanguage(name);
-				var shouldBePrimary = primaries.indexOf(name) >= 0;
-
+				var shouldBePrimary = languages.indexOf(name) >= 0;
 				if (koLanguage.primary != shouldBePrimary) {
 					koLanguage.primary = shouldBePrimary;
 					madeChange = true;
-
-					var langPrefName = "languages/" + name;
+/*
+					var langPrefName = name;
 					var langPref = !langPrefs.hasPref(langPrefName) ? Cc["@activestate.com/koPreferenceSet;1"].createInstance() : langPrefs.getPref(langPrefName);
 
-					langPref.setBooleanPref("primary", shouldBePrimary);
-					if (!langPrefs.hasPref(langPrefName)) langPrefs.setPref(langPrefName, langPref);
+						langPref.setBooleanPref('primary', shouldBePrimary);
+						if (!langPrefs.hasPref(langPrefName)) langPrefs.setPref(langPrefName, langPref);
+*/
+					prefset.setBooleanPref('languages/%s/primary'.sprintf(name), shouldBePrimary);
 				}
 			});
 
@@ -267,13 +268,27 @@
 			}
 
 /*	Language Settings: Other
+	================================================
+	<boolean id="languages/JavaScript/useTabs">1</boolean>
+	<long id="languages/JavaScript/tabWidth">4</long>
+	<long id="languages/JavaScript/indentWidth">4</long>
+
+	<boolean id="languages/JavaScript/newBOM">0</boolean>
+	<string id="languages/JavaScript/newEncoding">utf-8</string>
 	================================================ */
 
-		for(i=0;i<primaries.length;i++) {
-			langPrefs.setStringPref(primaries[i]+'/newEncoding','utf-8');
-			langPrefs.setBooleanPref(primaries[i]+'/newBOM',0);
-			langPrefs.getPref('languages/'+primaries[i]).setLongPref('tabWidth',4);
-			langPrefs.getPref('languages/'+primaries[i]).setBooleanPref('useTabs',1);
-		}
+		for(i=0;i<languages.length;i++) {
+			language=languages[i];
 
+			prefset.setStringPref('languages/%s/newEncoding'.sprintf(language),'utf-8');
+			prefset.setBooleanPref('languages/%s/newBOM'.sprintf(language),0);
+
+			//if(langPrefs.hasPref(language+'/useTabs'))
+			prefset.setBooleanPref('languages/%s/useTabs'.sprintf(language),1);
+			//if(langPrefs.hasPref('languages/%s/tabWidth'.sprintf(language)+'/')) langPrefs.setLongPref(language+'/tabWidth',4);
+			//else
+			prefset.setLongPref('languages/%s/tabWidth'.sprintf(language),4);
+			prefset.setLongPref('languages/%s/indentWidth'.sprintf(language),4);
+		}
 	}
+

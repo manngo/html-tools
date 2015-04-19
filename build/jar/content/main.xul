@@ -20,7 +20,7 @@
 	<script type="application/x-javascript" src="chrome://html-tools/content/js/main.js" />
 
 	<menubar id="menubar_main">
-		<menu id="webtools" label="HTML Tools 0.3.3f" insertafter="helpMenu">
+		<menu id="webtools" label="HTML Tools 0.3.3g" insertafter="helpMenu">
 			<menupopup>
 				<menuitem id="info" label="About HTML Tools …" oncommand="window.openDialog('chrome://html-tools/content/info/info.xul','Info','chrome,centerscreen,modal');"
 					class="menuitem-iconic" image="chrome://html-tools/content/images/info.png"/>
