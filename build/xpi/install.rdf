@@ -4,7 +4,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>html-tools@101courseware.com</em:id>
         <em:name>HTML Tools</em:name>
-        <em:version>0.3.3g</em:version>
+        <em:version>0.9</em:version>
         <em:description>Tools to Simplify HTML Development</em:description>
         <em:creator>Mark Simon</em:creator>
         <em:homepageURL>http://101courseware.com/komodo/webtools</em:homepageURL>

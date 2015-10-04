@@ -17,6 +17,22 @@
 	onload="init();"
 	>
 
+
+	<groupbox flex="1">
+		<groupbox>
+			<caption label="Source"/>
+
+			<radiogroup id="choose-source">
+				<radio id="selection" value="selection" label="Selection" selected="true"/>
+				<radio id="file" value="file" label="From File"/>
+			</radiogroup>
+			<vbox>
+				<textbox id="src" value=""  width="180"/>
+				<button label="Choose File …" oncommand="getTableFile();"/>
+			</vbox>
+		</groupbox>
+	</groupbox>
+
 	<groupbox flex="1">
 		<groupbox>
 			<caption label="Delimiter"/>
@@ -48,6 +64,20 @@
 
 /* exported setSource, setDestination, setAccept, init, initMore */
 
+		function getTableFile() {
+			document.getElementById('choose-source').value='file';
+			var file='';
+			var nsIFilePicker = Components.interfaces.nsIFilePicker;
+			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+
+			fp.appendFilter("Text Files","*.txt; *.csv; *.tab");
+			fp.init(window, "Select a File", nsIFilePicker.modeOpen);
+			var result=fp.show();
+			if (result != nsIFilePicker.returnCancel) file = fp.file.path;
+			document.getElementById('src').value=file;
+
+		}
+
 		function setSource() {
 			var delimiter=document.getElementById('delimiter').value;
 			putSource(delimiter=='tab'
@@ -62,7 +92,7 @@
 		}
 
 		function setAccept() {
-			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Replace';
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Insert';
 		}
 
 		function getParms() {
@@ -77,6 +107,9 @@
 				sections:document.getElementById("sections").checked,
 				header:document.getElementById("header").checked,
 				footer:document.getElementById("footer").checked,
+
+				source: document.getElementById("choose-source").value,
+				file: document.getElementById("src").value,
 			};
 		}
 

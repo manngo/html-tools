@@ -258,7 +258,7 @@
 						langPref.setBooleanPref('primary', shouldBePrimary);
 						if (!langPrefs.hasPref(langPrefName)) langPrefs.setPref(langPrefName, langPref);
 */
-					prefset.setBooleanPref('languages/%s/primary'.sprintf(name), shouldBePrimary);
+					prefs.setBooleanPref('languages/%s/primary'.sprintf(name), shouldBePrimary);
 				}
 			});
 
@@ -291,4 +291,3 @@
 			prefset.setLongPref('languages/%s/indentWidth'.sprintf(language),4);
 		}
 	}
-
