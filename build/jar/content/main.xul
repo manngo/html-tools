@@ -26,6 +26,7 @@
 				<menuitem id="info" label="About HTML Tools 1.0 …" oncommand="window.openDialog('chrome://html-tools/content/info/info.xul','Info','chrome,centerscreen,modal');"
 					class="menuitem-iconic" image="chrome://html-tools/content/images/info.png"/>
 -->
+<<<<<<< HEAD
 				<menuitem id="info" label="About HTML Tools 1.1 …" oncommand="window.openDialog('chrome://html-tools/content/info/info.xul','Info','chrome,centerscreen,modal');"
 					class="menuitem-iconic"/>
 
@@ -40,6 +41,19 @@
 
 				<menuseparator />
 				<menuitem id="webtools-makeForm" label="Make Form" oncommand="doit(event);"  class="menuitem-iconic"/>
+=======
+				<menuitem id="info" label="About HTML Tools 1.0 …" oncommand="window.openDialog('chrome://html-tools/content/info/info.xul','Info','chrome,centerscreen,modal');"
+					class="menuitem-iconic"/>
+
+				<menuseparator />
+				<menuitem id="webtools-makeParagraphs" label="Make Paragraphs" oncommand="doit(event);" class="menuitem-iconic" />
+				<menuitem id="webtools-makeHeading" label="Make Heading" oncommand="doit(event);" class="menuitem-iconic"/>
+				<menuitem id="webtools-makeHeadingParagraphs" label="Make Headings &amp; Paragraphs" oncommand="doit(event);" class="menuitem-iconic"/>
+
+				<menuseparator />
+				<menuitem id="webtools-makeList" label="Make List" oncommand="doit(event);"  class="menuitem-iconic"/>
+				<menuitem id="webtools-makeTable" label="Make Table" oncommand="doit(event);"  class="menuitem-iconic"/>
+>>>>>>> origin/master
 
 				<menuseparator />
 				<menuitem id="webtools-addLocalImage" label="Add Local Image" oncommand="doit(event);"  class="menuitem-iconic"/>

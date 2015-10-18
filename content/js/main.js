@@ -126,6 +126,7 @@
 			//	HTML Containers
 				case 'webtools-makeTable':
 					window.openDialog('chrome://html-tools/content/dialog/html-tables.xul','Convert to Table','chrome,centerscreen,modal',parms);
+<<<<<<< HEAD
 					if(editor && parms.out) {
 						if(parms.out.source=='file') {
 							var data=fileUtilities.readAsync(parms.out.file);
@@ -147,6 +148,14 @@
 							result=makeForm(data,parms.out,eol);
 						}
 						else result=makeForm(editor.selText,parms.out,eol);
+=======
+					if(editor && parms.out) {
+						if(parms.out.source=='file') {
+							var data=fileUtilities.readAsync(parms.out.file);
+							result=makeTable(data,parms.out,eol);
+						}
+						else result=makeTable(editor.selText,parms.out,eol);
+>>>>>>> origin/master
 
 						if(parms.out.copy) copyText(result);
 						else editor.replaceSel(result);
