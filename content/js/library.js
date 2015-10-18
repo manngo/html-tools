@@ -1,7 +1,7 @@
 /*	Library
 	========================================================= */
 
-'use strict';
+	'use strict';
 
 	function status(message,append) {
 		if(document.getElementById('status')) {
@@ -155,7 +155,7 @@
 			'\t':	'\\t',
 			'\'':	quotes=='\''?'\\\'':'\'',
 			'"':	quotes=='"'?'\\"':'"',
-		}
+		};
 		return data.replace(/[\r\n\t'"]/g, function (m) {
 			return tr[m];
 		});

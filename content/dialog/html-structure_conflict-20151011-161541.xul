@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-structure"
+    title="Create HTML Structure"
+    orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<groupbox id="details">
+		<label>Place Holder</label>
+		<menulist id="placeholder">
+		  <menupopup>
+			<menuitem label="[none]" value="" selected="true"/>
+			<menuitem label="[bare]" value="…"/>
+			<menuitem label="&lt;h1&gt;" value="h1"/>
+			<menuitem label="&lt;p&gt;" value="p"/>
+			<menuitem label="Heading Level" value="?"/>
+		  </menupopup>
+		</menulist>
+		<checkbox id="subplaceholder" label="Include Non-Empty" checked="false" value="1" persist="checked"/>
+	</groupbox>
+
+	<groupbox>
+		<label>HTML</label>
+		<checkbox id="html" label="Include HTML Outline" checked="false" value="1" persist="checked"/>
+		<checkbox id="empty" label="Inline Empty Elements" checked="false" value="1" persist="checked"/>
+	</groupbox>
+
+	<groupbox id="sample" />
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+
+	<script type="application/x-javascript">
+		/* exported setSource, setDestination, setAccept, init, initMore */
+		function setSource() {
+			source.value = 'div#wrapper\n\theader\n\tdiv#content\n\t\tmain\n\t\t\tarticle\n\t\t\taside\n\t\tnav\nfooter\n';
+			window.sizeToContent();
+		}
+		function setDestination() {
+			destination.textContent=makeHTMLStructure(source.value,getParms());
+			window.sizeToContent();
+		}
+
+		function initMore() {
+			setSetDestination(['placeholder','subplaceholder','html']);
+			document.getElementById('placeholder').onselect=setDestination;
+		}
+
+		function setAccept() {
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Replace';
+		}
+
+		function getParms() {
+			return {
+				placeholder:document.getElementById('placeholder').value,
+				subplaceholder:document.getElementById('subplaceholder').checked,
+				html:document.getElementById('html').checked,
+				empty:document.getElementById('empty').checked,
+			};
+		}
+	</script>
+</dialog>

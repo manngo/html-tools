@@ -17,6 +17,8 @@
 	onload="init();"
 	>
 
+	<groupbox id="source-text" />
+
 	<groupbox id="details">
 		<label>Place Holder</label>
 		<menulist id="placeholder">
@@ -70,6 +72,8 @@
 				subplaceholder:document.getElementById('subplaceholder').checked,
 				html:document.getElementById('html').checked,
 				empty:document.getElementById('empty').checked,
+				source: document.getElementById("choose-source").value,
+				file: document.getElementById("src").value,
 			};
 		}
 	</script>

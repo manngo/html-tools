@@ -6,6 +6,7 @@
 <?xul-overlay href="chrome://html-tools/content/info/basic.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/lists.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/tables.xul"?>
+<?xul-overlay href="chrome://html-tools/content/info/form.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/others.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/text.xul"?>
 <?xul-overlay href="chrome://html-tools/content/info/document.xul"?>

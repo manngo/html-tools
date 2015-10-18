@@ -49,12 +49,12 @@
 
 		<groupbox>
 			<caption label="Languages" />
-<!--
+
 			<groupbox>
 				<caption label="Current Languages" />
 				<description id="primaryLanguages" width="300"></description>
 			</groupbox>
--->
+
 			<checkbox id="setPrimary" label="Use Main Web Languages:" checked="true" value="1"/>
 			<box>
 				<description id="listPrimaryLanguages"></description>
@@ -148,6 +148,7 @@
 		var i;
 
 		function setPrefs(prefs) {
+'use strict';
 			var i;
 			for(i in prefs) {
 				if(prefs.hasOwnProperty(i) && document.getElementById(i)) {
@@ -171,6 +172,7 @@
 		}
 
 		function getPrefs() {
+'use strict';
 			var i;
 			var thePrefs={};
 			for(i in currentPrefs) {
@@ -192,15 +194,19 @@
 		}
 
 		function initMore() {
+'use strict';
 			currentPrefs=getKOPrefs();
 			setPrefs(currentPrefs);
-//			document.getElementById('primaryLanguages').textContent=getPrimaryLanguages().join('; ');
+
+			document.getElementById('primaryLanguages').textContent=getPrimaryLanguages().join('; ');
+
 			var languages=listPrimaryLanguages();
 			document.getElementById('listPrimaryLanguages').value=languages[0].join(';');
 			document.getElementById('listSecondaryLanguages').value=languages[1].join(';');
 		}
 
 		function getParms() {
+'use strict';
 			var thePrefs=getPrefs();
 			thePrefs['setPrimary']=document.getElementById('setPrimary').checked;
 			thePrefs['setSecondary']=document.getElementById('setSecondary').checked;

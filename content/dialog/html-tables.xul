@@ -17,27 +17,33 @@
 	onload="init();"
 	>
 
-	<groupbox flex="1">
-		<groupbox>
-			<caption label="Delimiter"/>
 
-			<radiogroup id="delimiter">
-				<radio id="tab" value="tab" label="Use Tabs" selected="true" persist="selected"/>
-				<radio id="comma" value="comma" label="Use Commas" persist="selected"/>
-			</radiogroup>
-			<checkbox id="combine" label="Combine Delimiters" value="0" persist="checked"/>
-		</groupbox>
-		<checkbox id="header" label="Header Row" value="1" persist="checked"/>
+	<hbox id="main">
+		<vbox>
+			<groupbox id="source-text" />
+			<groupbox flex="1">
+				<groupbox>
+					<caption label="Delimiter"/>
 
-		<groupbox>
-			<caption label="Sections"/>
-			<checkbox id="sections" label="Use Sections" value="1"  persist="checked"/>
-			<checkbox id="footer" label="Footer Section" value="1" persist="checked"/>
-		</groupbox>
-	</groupbox>
+					<radiogroup id="delimiter">
+						<radio id="tab" value="tab" label="Use Tabs" selected="true" persist="selected"/>
+						<radio id="comma" value="comma" label="Use Commas" persist="selected"/>
+					</radiogroup>
+					<checkbox id="combine" label="Combine Delimiters" value="0" persist="checked"/>
+				</groupbox>
+				<checkbox id="header" label="Header Row" value="1" persist="checked"/>
 
-	<groupbox id="sample" />
-	<groupbox id="idclass" />
+				<groupbox>
+					<caption label="Sections"/>
+					<checkbox id="sections" label="Use Sections" value="1"  persist="checked"/>
+					<checkbox id="footer" label="Footer Section" value="1" persist="checked"/>
+				</groupbox>
+			</groupbox>
+			<groupbox id="idclass"/>
+		</vbox>
+		<groupbox id="sample"/>
+	</hbox>
+
 	<hbox id="okcancelbuttons"/>
 
 	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
@@ -47,6 +53,20 @@
 	<script>
 
 /* exported setSource, setDestination, setAccept, init, initMore */
+
+		function getTableFile() {
+			document.getElementById('choose-source').value='file';
+			var file='';
+			var nsIFilePicker = Components.interfaces.nsIFilePicker;
+			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+
+			fp.appendFilter("Text Files","*.txt; *.csv; *.tab");
+			fp.init(window, "Select a File", nsIFilePicker.modeOpen);
+			var result=fp.show();
+			if (result != nsIFilePicker.returnCancel) file = fp.file.path;
+			document.getElementById('src').value=file;
+
+		}
 
 		function setSource() {
 			var delimiter=document.getElementById('delimiter').value;
@@ -62,7 +82,7 @@
 		}
 
 		function setAccept() {
-			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Replace';
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Insert';
 		}
 
 		function getParms() {
@@ -77,6 +97,9 @@
 				sections:document.getElementById("sections").checked,
 				header:document.getElementById("header").checked,
 				footer:document.getElementById("footer").checked,
+
+				source: document.getElementById("choose-source").value,
+				file: document.getElementById("src").value,
 			};
 		}
 

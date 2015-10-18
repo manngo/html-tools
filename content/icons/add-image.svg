@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="32" height="32" viewBox="0, 0, 32, 32">
+  <g id="Layer_1" transform="translate(-104, -124)">
+    <path d="M108,124 L132,124 C134.209,124 136,125.791 136,128 L136,152 C136,154.209 134.209,156 132,156 L108,156 C105.791,156 104,154.209 104,152 L104,128 C104,125.791 105.791,124 108,124 z" fill="#A54E33"/>
+    <text transform="matrix(1, 0, 0, 1, 119.875, 140.688)">
+      <tspan x="-11.5" y="6.438" font-family="AppleColorEmoji" font-size="18" fill="#000000"> 🌄</tspan>
+    </text>
+  </g>
+</svg>

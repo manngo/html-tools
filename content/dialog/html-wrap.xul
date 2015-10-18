@@ -57,6 +57,7 @@ color: green;
 				<menuitem label="footer" value="footer" />
 				<menuitem label="nav" value="nav"/>
 				<menuitem label="article" value="article"/>
+				<menuitem label="main" value="main"/>
 				<menuitem label="section" value="section"/>
 				<menuseparator/>
 				<menuitem value="other" label="other …" id="other"/>
@@ -107,6 +108,7 @@ color: green;
 				case 'footer':
 				case 'nav':
 				case 'article':
+				case 'main':
 				case 'section':
 					type.value='block';
 					newline.checked=true;

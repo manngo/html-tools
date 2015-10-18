@@ -1,0 +1,94 @@
+name*						Name
+@email*						Email Address
+subject*=Misc				Subject
+[message]*					Message
+comments=Hello There		Additional Comments
+()fruit=apple				Apple
+()fruit=banana				Banana
+()fruit=cherry				Cherry
+[]instrument[]=accordion	Accordion
+[]instrument[]=banjo		Banjo
+[]stuff=stuff				More Stuff
+animal:						Animal	Select=;Aardvark=aardvark;Bilby=bilby;Cockatoo=cockatoo
+(send)						Send
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Notes:
+
+Format
+
+	Type		format		Label	Options
+	text		name		Label
+	email		@name		Label
+	textarea	[name]		Label
+	radio		()name		Label
+	checkbox	[]name		Label
+	select		name:		Label	Text=value;Text=value;Text=value
+	button		(button)	Label
+
+<html:table>
+	<html:thead>
+		<html:tr><html:th>Type</html:th><html:th>format</html:th><html:th>Label</html:th><html:th>Options</html:th></html:tr>
+	</html:thead>
+	<html:tbody>
+		<html:tr><html:td>text</html:td><html:td>name</html:td><html:td>Label</html:td></html:tr>
+		<html:tr><html:td>email</html:td><html:td>@name</html:td><html:td>Label</html:td></html:tr>
+		<html:tr><html:td>textarea</html:td><html:td>[name]</html:td><html:td>Label</html:td></html:tr>
+		<html:tr><html:td>radio</html:td><html:td>()name</html:td><html:td>Label</html:td></html:tr>
+		<html:tr><html:td>checkbox</html:td><html:td>[]name</html:td><html:td>Label</html:td></html:tr>
+		<html:tr><html:td>select</html:td><html:td>name:</html:td><html:td>Label</html:td><html:td>Text=value;Text=value;Text=value</html:td></html:tr>
+		<html:tr><html:td>button</html:td><html:td>(button)</html:td><html:td>Label</html:td></html:tr>
+	</html:tbody>
+</html:table>
+
+
+
+
+Options
+
+	name=value	value="…"
+	name*		required
+
+To Do:
+
+	radio
+		fruit
+			apple=Apple
+			banana=Banana
+			cherry=Cherry
+
+	Form method & action
+
+	Button Type
+		(send=submit)		Send
+		(clear=reset)		Clear
+		(=reset)			Clear
+
+	Options
+		for
+		paragraphs vs table vs nothing

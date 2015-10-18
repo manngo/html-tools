@@ -14,7 +14,7 @@ function message(text) {
 	ko.interpolate.interpolateString('%(ask:%s)'.sprintf(text),false,'Special Message');
 }
 
-		function HTMLTemplate() {
+		function htmlTemplate() {
 			var document=ko.views.manager.currentView.koDoc;
 			var editor=ko.views.manager.currentView.scimoz;
 			var currentView=ko.views.manager.currentView;

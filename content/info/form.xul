@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<overlay id="singleItemEx"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<tabs id="info-tabs">
+			<tab label="Generate Form"/>
+		</tabs>
+
+		<tabpanels id="info-panels">
+			<tabpanel>
+				<html:table>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Generate Form</html:h2>
+							<html:p>These tools will convert plain text to a form.</html:p>
+							<html:p>To use, select some plain text and choose one of the menu items to convert.<html:br/>
+								Optionally you may include an id or a class name.</html:p>
+							<html:ul>
+								<html:li>For a form, put each element on a separate line.<html:br/>
+									The format for each element is below.</html:li>
+							</html:ul>
+							<html:p>The selected text will be replaced with the converted code.<html:br/>
+								Alternatively, you can copy the converted code to the clipboard.</html:p>
+							<html:p>The clipboard icon beside the samples allow you to make a copy of the sample itself.</html:p>
+						</html:td>
+					</html:tr>
+
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Sample</html:h2>
+							<html:table>
+								<html:thead>
+									<html:tr><html:th>Element</html:th><html:th>Label</html:th><html:th>Options</html:th></html:tr>
+								</html:thead>
+								<html:tbody>
+									<html:tr><html:td>name*</html:td><html:td>Name</html:td></html:tr>
+									<html:tr><html:td>@email*</html:td><html:td>Email Address</html:td></html:tr>
+									<html:tr><html:td>subject*=Misc</html:td><html:td>Subject</html:td></html:tr>
+									<html:tr><html:td>[message]*</html:td><html:td>Message</html:td></html:tr>
+									<html:tr><html:td>comments=Hello There</html:td><html:td>Additional Comments</html:td></html:tr>
+									<html:tr><html:td>()fruit=apple</html:td><html:td>Apple</html:td></html:tr>
+									<html:tr><html:td>()fruit=banana</html:td><html:td>Banana</html:td></html:tr>
+									<html:tr><html:td>()fruit=cherry</html:td><html:td>Cherry</html:td></html:tr>
+									<html:tr><html:td>[]instrument[]=accordion</html:td><html:td>Accordion</html:td></html:tr>
+									<html:tr><html:td>[]instrument[]=banjo</html:td><html:td>Banjo</html:td></html:tr>
+									<html:tr><html:td>[]stuff=stuff</html:td><html:td>More Stuff</html:td></html:tr>
+									<html:tr><html:td>animal:</html:td><html:td>Animal</html:td><html:td>Select=;Aardvark=aardvark;Bilby=bilby;Cockatoo=cockatoo</html:td></html:tr>
+									<html:tr><html:td>(send)</html:td><html:td>Send</html:td></html:tr>
+								</html:tbody>
+							</html:table>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td colspan="2">
+							<html:h2>Format</html:h2>
+							<html:table>
+								<html:thead>
+									<html:tr><html:th>Type</html:th><html:th>format</html:th><html:th>Label</html:th><html:th>Options</html:th></html:tr>
+								</html:thead>
+								<html:tbody>
+									<html:tr><html:td>text</html:td><html:td>name</html:td><html:td>Label</html:td></html:tr>
+									<html:tr><html:td>email</html:td><html:td>@name</html:td><html:td>Label</html:td></html:tr>
+									<html:tr><html:td>textarea</html:td><html:td>[name]</html:td><html:td>Label</html:td></html:tr>
+									<html:tr><html:td>radio</html:td><html:td>()name</html:td><html:td>Label</html:td></html:tr>
+									<html:tr><html:td>checkbox</html:td><html:td>[]name</html:td><html:td>Label</html:td></html:tr>
+									<html:tr><html:td>select</html:td><html:td>name:</html:td><html:td>Label</html:td><html:td>Text=value;Text=value;Text=value</html:td></html:tr>
+									<html:tr><html:td>button</html:td><html:td>(name)</html:td><html:td>Label</html:td></html:tr>
+								</html:tbody>
+							</html:table>
+							<html:h3>Name Options</html:h3>
+							<html:table>
+								<html:thead>
+									<html:tr><html:th>Option</html:th><html:th>Meaning</html:th></html:tr>
+								</html:thead>
+								<html:tbody>
+									<html:tr><html:td>name=value</html:td><html:td>value="…"</html:td></html:tr>
+									<html:tr><html:td>name*</html:td><html:td>required</html:td></html:tr>
+								</html:tbody>
+							</html:table>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</tabpanel>
+		</tabpanels>
+</overlay>

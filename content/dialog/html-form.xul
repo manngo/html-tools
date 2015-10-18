@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+	id="dialog-table"
+	title="Convert to Table"
+	orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<hbox id="main">
+		<vbox>
+			<groupbox id="source-text" />
+			<groupbox flex="1">
+				<caption label="Options"/>
+				<checkbox id="placeholder" label="Use placeholder" value="1"  persist="checked"/>
+			</groupbox>
+			<groupbox flex="1">
+				<caption label="Form"/>
+				<checkbox id="add-form" label="Add Form" value="1"  persist="checked"/>
+
+				<groupbox id="form-attributes" hidden="qtrue">
+					<box id="method">
+						<label control="form-method" width="32">method</label>
+						<menulist id="form-method">
+							<menupopup ignorekeys="true" persist="value">
+								<menuitem value="get" label="get" id="other"/>
+								<menuitem value="post" label="post" id="other"/>
+							</menupopup>
+						</menulist>
+					</box>
+					<box id="action">
+						<label control="form-action" width="32">action</label>
+						<textbox id="form-action" value="" persist="value" />
+					</box>
+				</groupbox>
+
+			</groupbox>
+
+			<groupbox id="idclass"/>
+		</vbox>
+		<groupbox id="sample"/>
+	</hbox>
+
+
+
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+
+/* exported setSource, setDestination, setAccept, init, initMore */
+
+		function setSource() {
+			var source='name*\t\t\t\t\t\tName\r\n@email*\t\t\t\t\t\tEmail Address\r\nsubject*=Misc\t\t\t\tSubject\r\n[message]*\t\t\t\t\tMessage\r\ncomments=Hello There\t\tAdditional Comments\r\n()fruit=apple\t\t\t\tApple\r\n()fruit=banana\t\t\t\tBanana\r\n()fruit=cherry\t\t\t\tCherry\r\n[]instrument[]=accordion\tAccordion\r\n[]instrument[]=banjo\t\tBanjo\r\n[]stuff=stuff\t\t\t\tMore Stuff\r\nanimal:\t\t\t\t\t\tAnimal\tSelect=;Aardvark=aardvark;Bilby=bilby\r\n(send)\t\t\t\t\t\tSend\r\n';
+			putSource(source);
+			setDestination();
+		}
+
+		function setDestination() {
+			putDestination(makeForm(getSource(),getParms()));
+			window.sizeToContent();
+		}
+
+		function setAccept() {
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Insert';
+		}
+
+		function getParms() {
+			var result= {
+				copy:document.getElementById("copy").checked,
+				id:document.getElementById("id").value,
+				className:document.getElementById("class").value,
+
+				placeholder:document.getElementById("placeholder").checked,
+
+				addForm:document.getElementById("add-form").checked,
+				method: document.getElementById("form-method").value,
+				action: document.getElementById("form-action").value,
+
+				source: document.getElementById("choose-source").value,
+				file: document.getElementById("src").value,
+			};
+			return result;
+		}
+
+		function initMore() {
+			document.getElementById('add-form').onclick=function() {
+				document.getElementById('form-attributes').hidden = !this.checked;
+				setSource();
+			};
+			document.getElementById('form-attributes').hidden=!document.getElementById('add-form').checked;
+			document.getElementById('placeholder').onclick=setSource;
+
+//			document.getElementById('tab').onclick=
+//			document.getElementById('comma').onclick=
+//				setSource;
+//			document.getElementById('header').onclick=
+//			document.getElementById('sections').onclick=
+//			document.getElementById('footer').onclick=
+//			document.getElementById('combine').onclick=
+//				setDestination;
+		}
+
+	</script>
+</dialog>

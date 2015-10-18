@@ -44,22 +44,8 @@
 						</html:td>
 					</html:tr>
 					<html:tr>
-						<html:th>0.3.3e</html:th>
-						<html:td>
-							<html:p>Changes:</html:p>
-							<html:ul>
-							</html:ul>
-							<html:p>Fixes:</html:p>
-							<html:ul>
-							</html:ul>
-						</html:td>
-					</html:tr>
-					<html:tr>
 						<html:th>0.3.3f</html:th>
 						<html:td>
-							<html:p>Changes:</html:p>
-							<html:ul>
-							</html:ul>
 							<html:p>Fixes:</html:p>
 							<html:ul>
 								<html:li>Fixed but with simple prefs not working.</html:li>
@@ -69,12 +55,36 @@
 					<html:tr>
 						<html:th>0.3.3g</html:th>
 						<html:td>
-							<html:p>Changes:</html:p>
-							<html:ul>
-							</html:ul>
 							<html:p>Fixes:</html:p>
 							<html:ul>
 								<html:li>Simple Prefs working, but still investigating issues with setting languages.</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>1.0</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+								<html:li>First Release Version</html:li>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+								<html:li>Removed Icons.</html:li>
+							</html:ul>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:th>1.1</html:th>
+						<html:td>
+							<html:p>Changes:</html:p>
+							<html:ul>
+								<html:li>Added File Upload to some tools</html:li>
+								<html:li>Added Form Generator</html:li>
+							</html:ul>
+							<html:p>Fixes:</html:p>
+							<html:ul>
+								<html:li>Re-organised some of the larger dialogs</html:li>
 							</html:ul>
 						</html:td>
 					</html:tr>

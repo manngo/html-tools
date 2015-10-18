@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+	id="dialog-paragraphs"
+	title="Convert to Paragraphs"
+	orient="vertical"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<groupbox>
+		<checkbox id="br" label="Require Double Spacing (allows &lt;br&gt;)" value="1" persist="checked"/>
+		<groupbox>
+			<checkbox id="xhtml"/>
+		</groupbox>
+	</groupbox>
+
+
+	<groupbox id="sample" />
+	<groupbox id="idclass" />
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+/* exported setSource, setDestination, setAccept, init */
+		var xhtml,br;
+		function initMore() {
+			xhtml=document.getElementById('xhtml');
+			br=document.getElementById('br');
+			setSetDestination(['br','xhtml']);
+			xhtml.setAttribute('disabled',!br.checked);
+			xhtml.onclick=function() {
+				setSource();
+			};
+
+		br.onclick=function() {
+				setSource();
+				xhtml.setAttribute('disabled',!br.checked);
+			};
+		}
+
+		function setSource() {
+			var br=document.getElementById('br');
+			putSource(br.checked ?
+				'The cat sat on the mat.\nAnd that is that.\n\nThe frog sat on the log.\nAnd watched the bog' :
+				'The cat sat on the mat.\nAnd that is that.');
+
+			setDestination();
+		}
+		function setDestination() {
+			putDestination(makeParagraphs(getSource(),getParms()));
+			window.sizeToContent();
+		}
+		function setAccept() {
+			document.documentElement.getButton('accept').label=document.getElementById('copy').checked?'Copy':'Replace';
+		}
+
+		function getParms() {
+			return {
+				id:document.getElementById('id').value,
+				className:document.getElementById('class').value,
+				br:document.getElementById('br').checked,
+				xhtml:document.getElementById('xhtml').checked
+			};
+		}
+	</script>
+</dialog>

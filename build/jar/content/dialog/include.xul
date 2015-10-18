@@ -8,8 +8,24 @@
 	<script>
 	</script>
 
+	<!-- Source Text -->
+	<groupbox id="source-text" flex="1">
+		<caption label="Source"/>
+
+		<radiogroup id="choose-source">
+			<radio id="selection" value="selection" label="Selection" selected="true"/>
+			<radio id="file" value="file" label="From File"/>
+		</radiogroup>
+		<vbox>
+			<textbox id="src" value=""  width="180"/>
+			<button label="Choose File …"/>
+		</vbox>
+	</groupbox>
+
+
 	<!-- Sample -->
-	<groupbox id="sample"><caption label="Sample"/>
+	<groupbox id="sample">
+		<caption label="Sample"/>
 		<box><button id="copy-source" class="copy" onclick="copyText(this);"/><label>Source</label></box>
 		<!--textbox id="help-source" class='sample pre' maxwidth="300" multiline="true" onoverflow="this.height = this.inputField.scrollHeight+12;"/-->
 		<description id='help-source' class='sample pre' maxwidth="300">Source</description>

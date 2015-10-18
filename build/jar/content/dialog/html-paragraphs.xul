@@ -17,13 +17,14 @@
 	onload="init();"
 	>
 
+	<groupbox id="source-text" />
+
 	<groupbox>
 		<checkbox id="br" label="Require Double Spacing (allows &lt;br&gt;)" value="1" persist="checked"/>
 		<groupbox>
 			<checkbox id="xhtml"/>
 		</groupbox>
 	</groupbox>
-
 
 	<groupbox id="sample" />
 	<groupbox id="idclass" />
@@ -72,7 +73,10 @@
 				id:document.getElementById('id').value,
 				className:document.getElementById('class').value,
 				br:document.getElementById('br').checked,
-				xhtml:document.getElementById('xhtml').checked
+				xhtml:document.getElementById('xhtml').checked,
+
+				source: document.getElementById("choose-source").value,
+				file: document.getElementById("src").value,
 			};
 		}
 	</script>

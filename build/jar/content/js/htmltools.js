@@ -631,3 +631,137 @@ function makeAnchors(text,parms,eol) {
 			return '%s</%s>'.sprintf(tabs,element);
 		}
 	}
+
+/*	makeForm
+	--------------------------------------------------------- */
+
+	function makeForm(text,options,eol) {
+		eol=eol||'\n';
+		var form=text.split(/\r\n|\r|\n/);
+		var data=[],line;
+		var items,label,item,value,required,element,type,name,options,placeholder;
+
+		var addPlaceholder=!!options.placeholder;
+		var addForm=!!options.addForm;
+		var action=options.action||'';
+		var method=options.method||'get';
+		var id = options.id ? ' id="%s"'.sprintf(options.id) : '';
+		var className = options.className?' class="%s"'.sprintf(options.className) : '';
+
+		for(var i=0;i<form.length;i++) {
+			line=form[i].trim();
+			if(line) data.push(line);
+		}
+
+		for(var i=0;i<data.length;i++) {
+			items=data[i].split(/\t+/);
+
+			if(items.length<2) label='';
+			else label=items[1];
+			if(items.length>2) options=items[2];
+
+			item=items[0].split(/\s*=\s*/);
+			if(item.length>1) value=item[1];
+			else value='';
+			item=item[0];
+
+			if(item.slice(-1)=='*') {
+				required=true;
+				item=item.slice(0,-1);
+			}
+			else required=false;
+
+			switch(item.charAt(0)) {
+				case '@':						//	email
+					type='email';
+					break;
+				case '[':						//	checkbox or textarea
+					if(item.charAt(1)==']') {	//	checkbox
+						type='checkbox';
+						name=item.slice(2);
+					}
+					else {						//	textarea
+						type='textarea';
+						name=item.slice(1,-1);
+					}
+					break;
+				case '(':						//	radio or button
+					if(item.charAt(1)==')') {	//	radio
+						type='radio';
+						name=item.slice(2);
+					}
+					else {						//	button
+						type='button';
+						name=item.slice(1,-1);
+					}
+					break;
+				default:						//	text or Select
+					if(item.slice(-1)==':') {	//	select
+						type='select';
+						name=item.slice(0,-1);
+						options=options.split(';');
+						for(var o=0;o<options.length;o++) {
+							item=options[o].split('=');
+							options[o]={
+								"text": item[0],
+								"value": item[1]||''
+							};
+						}
+					}
+					else {
+						type='text';
+						name=item;
+					}
+			}
+
+			data[i]={
+				"name": name,
+				"type": type,
+				"label": label,
+				"value": value,
+				"required": required,
+				"options": options
+			};
+		}
+
+		for(var i=0;i<data.length;i++) {
+			value = data[i].value ? ' value="%s"'.sprintf(data[i].value) : '';
+			required = data[i].required ? ' required' : '';
+			placeholder = addPlaceholder&&data[i].label ? ' placeholder="%s"'.sprintf(data[i].label) : '';
+			switch(data[i].type) {
+				case 'text':
+				case 'email':
+					element='<input name="%s" type="%s"%s%s%s>'.sprintf(data[i].name,data[i].type,required,value,placeholder);
+					element='<p><label>%s<br>%s</label></p>'.sprintf(data[i].label,element);
+					break;
+				case 'radio':
+				case 'checkbox':
+					element='<input name="%s" type="%s"%s%s>'.sprintf(data[i].name,data[i].type,required,value);
+					element='<p>%s&nbsp;<label>%s</label></p>'.sprintf(element,data[i].label);
+					break;
+				case 'textarea':
+					element='<textarea name="%s"%s%s>%s</textarea>'.sprintf(data[i].name,required,placeholder,data[i].value);
+					element='<p><label>%s<br>%s</label></p>'.sprintf(data[i].label,element);
+					break;
+				case 'button':
+					element='<p><button name="%s">%s</button></p>'.sprintf(data[i].name,data[i].label?data[i].label:data[i].name);
+					break;
+				case 'select':
+					var options=[];
+					for(var o=0;o<data[i].options.length;o++) options.push('\t\t<option value="%s">%s</option>'.sprintf(data[i].options[o].value,data[i].options[o].text));
+					options=options.join('\n');
+					element='<select name="%s">%s</select>\n'.sprintf(data[i].name,options);
+					element='<p><label>%s<br>%s\t</label></p>'.sprintf(data[i].label,element);
+					break;
+				default:
+					element='';
+			}
+			data[i]=element;
+		}
+
+		if(!addForm) return data.join(eol);
+		else {
+			for(var i=0;i<data.length;i++) data[i]='\t'+data[i];
+			return '<form%s%s method="%s" action="%s">%s%s%s</form>'.sprintf(id,className,method,action,eol,data.join(eol),eol);
+		}
+	}

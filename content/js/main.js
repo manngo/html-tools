@@ -6,12 +6,14 @@
 	Generally, the method is to select the text and select the function.
 
 	================================================ */
+/* jshint -W100 */
+
 /* exported doit,test,remember */
 /*global
 	alert,
 	smartQuotes, makeParagraphs, makeHeading, makeHeadingsParagraphs, makeList, makeTable, addImage, addAnchor, addLink, makeAnchors, wrapTag, unTag, entify, makeHTML5, CSSP, arrayLiteral,
 	makeForm, makeInput, makeFieldset, makeLabel, makeNestedList,  makeSubmit, makeSelect, makeButton, makeRadiobutton, convertRadioButtons, makeCheckbox, makeTextarea, makeHTMLStructure
-	makeVideo, addComment, hex2rgb, boxShadow, borderRadius,
+	makeVideo, addComment, hex2rgb, boxShadow, borderRadius, fileUtilities, htmlTemplate, jsString
 	setKOPrefs
 */
 
@@ -27,22 +29,12 @@
 		var editor = ko.views.manager.currentView.scimoz;
 		editor.replaceSel(smartQuotes(editor.selText));
 	}
-/*
-		var a='This is a string with “smart” quotes';
-		a='This character may get silently deleted by one or more browsers.';
-		alert(a);    //    string includes “smart” quotes
-		a=/[“”‘’]/;
-		var q='“';
-		//“
-	LEFT DOUBLE QUOTATION MARK
-	Unicode: U+201C, UTF-8: E2 80 9C
-*/
 
 /*	Support Functions
 	================================================ */
 
 	function getCWD() {
-		return ko.projects.manager.currentProject.liveDirectory;
+		return ko.projects.manager.currentProject?ko.projects.manager.currentProject.liveDirectory:null;
 	}
 
 	function copyText (text) {
@@ -97,9 +89,10 @@
 				case 'cssp':
 					//	window.openDialog('chrome://html-tools/content/dialog/html5.xul','Convert to HTML5','chrome,centerscreen,modal',parms);
 					if(editor) CSSP();
+					break;
 				case 'html-template':
 					//	window.openDialog('chrome://html-tools/content/dialog/html5.xul','Convert to HTML5','chrome,centerscreen,modal',parms);
-					if(editor) HTMLTemplate();
+					if(editor) htmlTemplate();
 					break;
 
 				case 'css-colour':
@@ -133,25 +126,47 @@
 			//	HTML Containers
 				case 'webtools-makeTable':
 					window.openDialog('chrome://html-tools/content/dialog/html-tables.xul','Convert to Table','chrome,centerscreen,modal',parms);
-
 					if(editor && parms.out) {
-						result=makeTable(editor.selText,parms.out,eol);
+						if(parms.out.source=='file') {
+							var data=fileUtilities.readAsync(parms.out.file);
+							result=makeTable(data,parms.out,eol);
+						}
+						else result=makeTable(editor.selText,parms.out,eol);
+
+						if(parms.out.copy) copyText(result);
+						else editor.replaceSel(result);
+					}
+					break;
+
+			//	HTML Form
+				case 'webtools-makeForm':
+					window.openDialog('chrome://html-tools/content/dialog/html-form.xul','Convert to Form','chrome,centerscreen,modal',parms);
+					if(editor && parms.out) {
+						if(parms.out.source=='file') {
+							var data=fileUtilities.readAsync(parms.out.file);
+							result=makeForm(data,parms.out,eol);
+						}
+						else result=makeForm(editor.selText,parms.out,eol);
+
 						if(parms.out.copy) copyText(result);
 						else editor.replaceSel(result);
 					}
 					break;
 
 				case 'webtools-addLocalImage':
+					if(!cwd) break;
 					parms={ inn: { cwd: cwd }, out: null };
 					window.openDialog('chrome://html-tools/content/dialog/html-image.xul','Make Image','chrome,centerscreen,modal',parms);
 					if(editor && parms.out)		editor.insertText(editor.currentPos,addImage(parms.out),eol);
 					break;
 				case 'webtools-addLink':
+					if(!cwd) break;
 					parms={ inn: { cwd: cwd }, out: null };
 					window.openDialog('chrome://html-tools/content/dialog/html-link.xul','Add Link','chrome,centerscreen,modal',parms);
 					if(editor && parms.out)		editor.insertText(editor.currentPos,addLink(parms.out),eol);
 					break;
 				case 'webtools-addAnchor':
+					if(!cwd) break;
 					parms={ inn: { cwd: cwd }, out: null };
 					window.openDialog('chrome://html-tools/content/dialog/html-anchor.xul','Add Anchor','chrome,centerscreen,modal',parms);
 					if(editor && parms.out)		editor.insertText(editor.currentPos,addAnchor(parms.out),eol);

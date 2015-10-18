@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://html-tools/content/css/dialog.css" type="text/css" ?>
+<?xul-overlay href="chrome://html-tools/content/dialog/include.xul"?>
+
+<dialog
+    id="dialog-lists"
+    title="Convert to List"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	defaultButton="accept"
+	buttonlabelcancel="Cancel"
+	buttonlabelaccept="OK"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();"
+	onload="init();"
+	>
+
+	<groupbox flex="1" id="details">
+		<caption label="List Type" />
+		<radiogroup id="type" persist="value">
+			<radio id="ul" value="ul" label="Unordered" selected="true" persist="selected"/>
+			<radio id="ol" value="ol" label="Ordered" persist="selected"/>
+			<radio id="dl" value="dl" label="Description (Definition)" persist="selected"/>
+		</radiogroup>
+		<groupbox>
+			<checkbox id="span" label="Use Spans" checked="false" value="1" persist="checked"/>
+			<checkbox id="nested" label="Nested List" checked="false" value="1" persist="checked"/>
+		</groupbox>
+	</groupbox>
+
+	<groupbox id="sample"/>
+	<groupbox id="idclass"/>
+	<hbox id="okcancelbuttons"/>
+
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/htmltools.js" />
+	<script type="application/x-javascript" src="chrome://html-tools/content/js/dialogs.js" />
+
+	<script>
+/* exported setSource, setDestination, setAccept, init, initMore */
+		var type;
+		var nested;
+
+		function setSource() {
+			type=document.getElementById('type');
+			nested=document.getElementById('nested');
+
+			if(nested.checked)
+				putSource('fruit\n\tapple\n\tbanana\n\tcherry\n\tdonut\ninstruments\n\taccordion\n\tbanjo\n\tclarinet\n\tdobro\nanimals\n\taardvark\n\tbadger\n\tcaterpillar\n\tdragon');
+			else switch(type.value) {
+				case 'ul':
+					putSource('apple\nbanana\ncherry\ndonut');
+					break;
+				case 'ol':
+					putSource('accordion\nbanjo\nclarinet\ndobro');
+					break;
+				case 'dl':
+					putSource('aardvark\nbadger\ncaterpillar\ndragon');
+					break;
+			}
+
+			setDestination();
+		}
+		function setDestination() {
+			putDestination(makeList(getSource(),getParms()));
+			window.sizeToContent();
+		}
+
+		function initMore() {
+			document.getElementById('ul').onclick=
+			document.getElementById('ol').onclick=
+			document.getElementById('dl').onclick=
+			document.getElementById('span').onclick=
+			document.getElementById('nested').onclick=function() {
+				setSource();
+				setDestination();
+				window.sizeToContent();
+			};
+		}
+
+		function getParms() {
+			return {
+				type:document.getElementById("type").value,
+				className:document.getElementById("class").value,
+				id:document.getElementById("id").value,
+				span:document.getElementById("span").checked,
+				nested:document.getElementById("nested").checked
+			};
+		}
+
+	</script>
+</dialog>
