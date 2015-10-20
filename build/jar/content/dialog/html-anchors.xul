@@ -23,6 +23,8 @@
 	onload='init();'
 	>
 
+	<groupbox id="source-text" />
+
 	<groupbox flex="1">
 		<radiogroup id="reverse" persist="value">
 			<radio id="href" value="1" label="href text" persist="selected"/>
@@ -95,6 +97,8 @@
 				'br':br.checked,
 				'comma':comma.checked,
 				'xhtml':xhtml.checked,
+				source: document.getElementById("choose-source").value,
+				file: document.getElementById("src").value,
 			};
 		}
 

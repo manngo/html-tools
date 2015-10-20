@@ -126,7 +126,7 @@
 			//	HTML Containers
 				case 'webtools-makeTable':
 					window.openDialog('chrome://html-tools/content/dialog/html-tables.xul','Convert to Table','chrome,centerscreen,modal',parms);
-<<<<<<< HEAD
+
 					if(editor && parms.out) {
 						if(parms.out.source=='file') {
 							var data=fileUtilities.readAsync(parms.out.file);
@@ -142,20 +142,14 @@
 			//	HTML Form
 				case 'webtools-makeForm':
 					window.openDialog('chrome://html-tools/content/dialog/html-form.xul','Convert to Form','chrome,centerscreen,modal',parms);
-					if(editor && parms.out) {
-						if(parms.out.source=='file') {
-							var data=fileUtilities.readAsync(parms.out.file);
-							result=makeForm(data,parms.out,eol);
-						}
-						else result=makeForm(editor.selText,parms.out,eol);
-=======
+
 					if(editor && parms.out) {
 						if(parms.out.source=='file') {
 							var data=fileUtilities.readAsync(parms.out.file);
 							result=makeTable(data,parms.out,eol);
 						}
 						else result=makeTable(editor.selText,parms.out,eol);
->>>>>>> origin/master
+
 
 						if(parms.out.copy) copyText(result);
 						else editor.replaceSel(result);
@@ -182,7 +176,17 @@
 					break;
 				case 'webtools-makeAnchors':
 					window.openDialog('chrome://html-tools/content/dialog/html-anchors.xul','Make Anchors','chrome,centerscreen,modal',parms);
-					if(editor && parms.out)		editor.replaceSel(makeAnchors(editor.selText,parms.out,eol));
+
+					if(editor && parms.out) {
+						if(parms.out.source=='file') {
+							var data=fileUtilities.readAsync(parms.out.file);
+							result=makeAnchors(data,parms.out,eol);
+						}
+						else result=makeAnchors(editor.selText,parms.out,eol);
+
+						if(parms.out.copy) copyText(result);
+						else editor.replaceSel(result);
+					}
 					break;
 
 			//	HTML Wrappers

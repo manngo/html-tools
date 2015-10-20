@@ -17,8 +17,6 @@
 	onload="init();"
 	>
 
-
-<<<<<<< HEAD
 	<hbox id="main">
 		<vbox>
 			<groupbox id="source-text" />
@@ -45,44 +43,6 @@
 		<groupbox id="sample"/>
 	</hbox>
 
-=======
-	<groupbox flex="1">
-		<groupbox>
-			<caption label="Source"/>
-
-			<radiogroup id="choose-source">
-				<radio id="selection" value="selection" label="Selection" selected="true"/>
-				<radio id="file" value="file" label="From File"/>
-			</radiogroup>
-			<vbox>
-				<textbox id="src" value=""  width="180"/>
-				<button label="Choose File …" oncommand="getTableFile();"/>
-			</vbox>
-		</groupbox>
-	</groupbox>
-
-	<groupbox flex="1">
-		<groupbox>
-			<caption label="Delimiter"/>
-
-			<radiogroup id="delimiter">
-				<radio id="tab" value="tab" label="Use Tabs" selected="true" persist="selected"/>
-				<radio id="comma" value="comma" label="Use Commas" persist="selected"/>
-			</radiogroup>
-			<checkbox id="combine" label="Combine Delimiters" value="0" persist="checked"/>
-		</groupbox>
-		<checkbox id="header" label="Header Row" value="1" persist="checked"/>
-
-		<groupbox>
-			<caption label="Sections"/>
-			<checkbox id="sections" label="Use Sections" value="1"  persist="checked"/>
-			<checkbox id="footer" label="Footer Section" value="1" persist="checked"/>
-		</groupbox>
-	</groupbox>
-
-	<groupbox id="sample" />
-	<groupbox id="idclass" />
->>>>>>> origin/master
 	<hbox id="okcancelbuttons"/>
 
 	<script type="application/x-javascript" src="chrome://html-tools/content/js/library.js" />
